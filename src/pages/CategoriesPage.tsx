@@ -29,6 +29,16 @@ export function CategoriesPage() {
 
   useEffect(() => {
     loadCategories();
+
+    // Kategori silindiğinde listeyi güncelle
+    const handleCategoryDeleted = () => {
+      loadCategories();
+    };
+
+    window.addEventListener("categoryDeleted", handleCategoryDeleted);
+    return () => {
+      window.removeEventListener("categoryDeleted", handleCategoryDeleted);
+    };
   }, []);
 
   const handleEditCategory = (categoryId: string) => {
@@ -58,6 +68,9 @@ export function CategoriesPage() {
               selectedCategory={selectedCategory?.id || null}
               onSelectCategory={handleEditCategory}
               selectedLanguage={selectedLanguage}
+              showEditLabel={true}
+              variant="vertical"
+              showDeleteButton={true}
             />
           )}
         </div>

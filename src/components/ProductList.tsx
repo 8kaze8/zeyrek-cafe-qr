@@ -1,10 +1,15 @@
 import React from "react";
 import { Product } from "../types/menu";
 import type { Language } from "../types/menu";
+import { ProductForm } from "./ProductForm";
+import { Category } from "../types/menu";
 
 interface ProductListProps {
   products: Product[];
   selectedLanguage: Language;
+  categories?: Category[];
+  onProductEditSuccess?: () => void;
+  mode?: "admin" | "user";
 }
 
 interface ProductModalProps {
@@ -76,10 +81,35 @@ const ProductModal: React.FC<ProductModalProps> = ({
 export const ProductList: React.FC<ProductListProps> = ({
   products,
   selectedLanguage,
+  categories = [],
+  onProductEditSuccess,
+  mode = "user",
 }) => {
   const [selectedProduct, setSelectedProduct] = React.useState<Product | null>(
     null
   );
+  const [editModalOpen, setEditModalOpen] = React.useState(false);
+  const [detailModalOpen, setDetailModalOpen] = React.useState(false);
+
+  const handleProductClick = (product: Product) => {
+    setSelectedProduct(product);
+    if (mode === "admin") {
+      setEditModalOpen(true);
+    } else {
+      setDetailModalOpen(true);
+    }
+  };
+
+  const handleEditModalClose = () => {
+    setEditModalOpen(false);
+    setSelectedProduct(null);
+    if (onProductEditSuccess) onProductEditSuccess();
+  };
+
+  const handleDetailModalClose = () => {
+    setDetailModalOpen(false);
+    setSelectedProduct(null);
+  };
 
   if (!products || products.length === 0) {
     return (
@@ -100,7 +130,7 @@ export const ProductList: React.FC<ProductListProps> = ({
           <div
             key={product.id}
             className="group relative bg-[#2a4c7d]/15 rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-500 backdrop-blur-sm border border-[#4fa3e3]/30 cursor-pointer"
-            onClick={() => setSelectedProduct(product)}
+            onClick={() => handleProductClick(product)}
           >
             <div className="aspect-[4/3] relative">
               <img
@@ -131,11 +161,50 @@ export const ProductList: React.FC<ProductListProps> = ({
           </div>
         ))}
       </div>
-      {selectedProduct && (
+      {mode === "admin" && editModalOpen && selectedProduct && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm px-2"
+          onClick={handleEditModalClose}
+        >
+          <div
+            className="relative w-full max-w-md rounded-3xl bg-gray-900 shadow-2xl p-0 overflow-hidden animate-fadeIn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={handleEditModalClose}
+              className="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors rounded-full w-9 h-9 flex items-center justify-center z-10"
+              aria-label="Kapat"
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 22 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 6L16 16M16 6L6 16"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+            <ProductForm
+              categories={categories}
+              onSuccess={handleEditModalClose}
+              editMode={true}
+              initialData={selectedProduct}
+              productId={selectedProduct.id}
+            />
+          </div>
+        </div>
+      )}
+      {mode === "user" && detailModalOpen && selectedProduct && (
         <ProductModal
           product={selectedProduct}
           selectedLanguage={selectedLanguage}
-          onClose={() => setSelectedProduct(null)}
+          onClose={handleDetailModalClose}
         />
       )}
     </>

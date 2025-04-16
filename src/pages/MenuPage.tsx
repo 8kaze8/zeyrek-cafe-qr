@@ -59,49 +59,76 @@ export function MenuPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center bg-[#6d2323] bg-gradient-to-b from-[#6d2323] to-[#3a1010] px-2">
-      <div className="w-full flex flex-col items-center pt-8 pb-4">
-        <img
-          src={logo}
-          alt="Zeyrek Cafe Logo"
-          className="w-32 h-32 sm:w-44 sm:h-44 object-contain mb-2 drop-shadow-xl"
-          style={{ maxWidth: 200 }}
-        />
-        <p className="text-base sm:text-lg font-medium text-[#f7e7d3] mb-2 text-center px-2 mt-2">
-          Eşsiz lezzetlerin ve keyifli anların adresi
-        </p>
+    <div className="min-h-screen flex flex-col items-center bg-[#6d2323] relative overflow-hidden">
+      {/* Modern Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#6d2323] via-[#541b1b] to-[#3a1010]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(43,16,16,0.4),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_-20%,rgba(255,255,255,0.1),transparent_25%)]" />
       </div>
 
-      <div className="w-full max-w-2xl mx-auto px-0 sm:px-4 -mt-2 pb-10 relative z-10">
-        <div className="flex flex-col sm:flex-row items-center sm:justify-between gap-3 mb-8">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="p-2 bg-[#2a4c7d]/60 rounded-xl backdrop-blur-sm">
-              <Utensils className="w-5 h-5 text-[#4fa3e3]" />
-            </div>
-            <h2 className="text-xl sm:text-2xl font-semibold text-[#4fa3e3] whitespace-nowrap">
-              Menümüz
-            </h2>
+      {/* Subtle Light Effects */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-br from-[#8b2929]/20 to-transparent" />
+        <div className="absolute bottom-0 right-0 w-full h-[500px] bg-gradient-to-tl from-[#2a4c7d]/10 to-transparent" />
+      </div>
+
+      {/* Content Container */}
+      <div className="relative w-full min-h-screen flex flex-col items-center">
+        {/* Header Section */}
+        <div className="relative w-full flex flex-col items-center pt-8 pb-4 px-2">
+          <div className="relative">
+            <div className="absolute -inset-1 bg-gradient-to-br from-[#f7e7d3]/10 to-[#4fa3e3]/5 rounded-full blur-xl" />
+            <img
+              src={logo}
+              alt="Zeyrek Cafe Logo"
+              className="w-32 h-32 sm:w-44 sm:h-44 object-contain drop-shadow-2xl relative"
+              style={{ maxWidth: 200 }}
+            />
           </div>
-          <LanguageSelector
-            selectedLanguage={selectedLanguage}
-            onLanguageChange={setSelectedLanguage}
-          />
+          <p className="text-base sm:text-lg font-medium text-[#f7e7d3] mb-2 text-center px-2 mt-6 max-w-md mx-auto leading-relaxed tracking-wide">
+            Eşsiz lezzetlerin ve keyifli anların adresi
+          </p>
         </div>
 
-        <div className="space-y-8">
-          <div className="bg-[#2a4c7d]/15 backdrop-blur-sm rounded-2xl p-3 sm:p-6 shadow-lg border border-[#4fa3e3]/30">
-            <CategoryList
-              categories={categories}
-              selectedCategory={selectedCategory}
-              onSelectCategory={setSelectedCategory}
+        {/* Menu Section */}
+        <div className="relative w-full max-w-2xl mx-auto px-4 sm:px-6 pb-12 z-10">
+          {/* Menu Header */}
+          <div className="flex flex-col sm:flex-row items-center sm:justify-between gap-4 mb-8">
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 bg-gradient-to-br from-[#2a4c7d]/60 to-[#2a4c7d]/40 rounded-xl backdrop-blur-sm shadow-lg border border-white/10">
+                <Utensils className="w-5 h-5 text-[#4fa3e3]" />
+              </div>
+              <h2 className="text-xl sm:text-2xl font-semibold text-[#4fa3e3] tracking-wide">
+                Menü
+              </h2>
+            </div>
+            <LanguageSelector
               selectedLanguage={selectedLanguage}
+              onLanguageChange={setSelectedLanguage}
             />
           </div>
 
-          <ProductList
-            products={filteredProducts}
-            selectedLanguage={selectedLanguage}
-          />
+          {/* Categories and Products */}
+          <div className="space-y-8">
+            <div className="bg-gradient-to-br from-[#2a4c7d]/30 to-[#2a4c7d]/20 backdrop-blur-sm rounded-2xl p-3 sm:p-6 shadow-lg border border-white/10">
+              <CategoryList
+                categories={categories}
+                selectedCategory={selectedCategory}
+                onSelectCategory={setSelectedCategory}
+                selectedLanguage={selectedLanguage}
+                variant="horizontal"
+              />
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#6d2323]/30 to-[#6d2323] pointer-events-none" />
+              <ProductList
+                products={filteredProducts}
+                selectedLanguage={selectedLanguage}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -4,8 +4,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Plus } from "lucide-react";
 import toast from "react-hot-toast";
-import { addProduct, uploadImageAndGetUrl } from "../lib/firebase-admin";
-import type { Category } from "../types/menu";
+import {
+  addProduct,
+  uploadImageAndGetUrl,
+  updateProduct,
+} from "../lib/firebase-admin";
+import type { Category, Product } from "../types/menu";
 
 const productSchema = z.object({
   name_tr: z.string().min(1, "Ürün adı zorunludur"),
@@ -25,11 +29,17 @@ type ProductFormData = z.infer<typeof productSchema>;
 interface ProductFormProps {
   categories: Category[];
   onSuccess: () => void;
+  editMode?: boolean;
+  initialData?: Partial<Product>;
+  productId?: string;
 }
 
 export const ProductForm: React.FC<ProductFormProps> = ({
   categories,
   onSuccess,
+  editMode = false,
+  initialData,
+  productId,
 }) => {
   const {
     register,
@@ -39,14 +49,20 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     formState: { errors, isSubmitting },
   } = useForm<ProductFormData>({
     resolver: zodResolver(productSchema),
-    defaultValues: {
-      order: 0,
-      price: 0,
-    },
+    defaultValues: initialData || { order: 0, price: 0 },
   });
   const [imageFile, setImageFile] = React.useState<File | null>(null);
   const [uploading, setUploading] = React.useState(false);
-  const [previewUrl, setPreviewUrl] = React.useState<string | null>(null);
+  const [previewUrl, setPreviewUrl] = React.useState<string | null>(
+    initialData?.image_url || null
+  );
+
+  React.useEffect(() => {
+    if (initialData) {
+      reset(initialData);
+      setPreviewUrl(initialData.image_url || null);
+    }
+  }, [initialData, reset]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
@@ -54,12 +70,14 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     if (file) {
       setPreviewUrl(URL.createObjectURL(file));
     } else {
-      setPreviewUrl(null);
+      setPreviewUrl(initialData?.image_url || null);
     }
   };
 
   const onSubmit = async (data: ProductFormData) => {
-    const loadingToast = toast.loading("Ürün ekleniyor...");
+    const loadingToast = toast.loading(
+      editMode ? "Ürün güncelleniyor..." : "Ürün ekleniyor..."
+    );
     try {
       let imageUrl = data.image_url;
       if (imageFile) {
@@ -68,24 +86,45 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         setValue("image_url", imageUrl);
         setUploading(false);
       }
-      await addProduct({
-        ...data,
-        image_url: imageUrl,
-        name_en: data.name_en || "",
-        name_ar: data.name_ar || "",
-        description_tr: data.description_tr || "",
-        description_en: data.description_en || "",
-        description_ar: data.description_ar || "",
-      });
-      toast.success("Ürün başarıyla eklendi", { id: loadingToast });
+      if (editMode && productId) {
+        await updateProduct(productId, {
+          ...data,
+          image_url: imageUrl ?? "",
+          name_en: data.name_en || "",
+          name_ar: data.name_ar || "",
+          description_tr: data.description_tr || "",
+          description_en: data.description_en || "",
+          description_ar: data.description_ar || "",
+        });
+        toast.success("Ürün güncellendi", { id: loadingToast });
+      } else {
+        await addProduct({
+          ...data,
+          image_url: imageUrl,
+          name_en: data.name_en || "",
+          name_ar: data.name_ar || "",
+          description_tr: data.description_tr || "",
+          description_en: data.description_en || "",
+          description_ar: data.description_ar || "",
+        });
+        toast.success("Ürün başarıyla eklendi", { id: loadingToast });
+      }
       reset();
       setImageFile(null);
       setPreviewUrl(null);
       onSuccess();
     } catch (error) {
       setUploading(false);
-      console.error("Ürün ekleme hatası:", error);
-      toast.error("Ürün eklenirken bir hata oluştu", { id: loadingToast });
+      console.error(
+        editMode ? "Ürün güncelleme hatası:" : "Ürün ekleme hatası:",
+        error
+      );
+      toast.error(
+        editMode
+          ? "Ürün güncellenirken bir hata oluştu"
+          : "Ürün eklenirken bir hata oluştu",
+        { id: loadingToast }
+      );
     }
   };
 
@@ -96,7 +135,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     >
       <div>
         <h2 className="text-xl font-semibold text-white mb-4">
-          Yeni Ürün Ekle
+          {editMode ? "Ürünü Düzenle" : "Yeni Ürün Ekle"}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
@@ -259,7 +298,13 @@ export const ProductForm: React.FC<ProductFormProps> = ({
           className="flex items-center justify-center w-full px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Plus className="w-4 h-4 mr-2" />
-          {isSubmitting ? "Ekleniyor..." : "Ürün Ekle"}
+          {isSubmitting
+            ? editMode
+              ? "Güncelleniyor..."
+              : "Ekleniyor..."
+            : editMode
+            ? "Kaydet"
+            : "Ürün Ekle"}
         </button>
       </div>
     </form>
