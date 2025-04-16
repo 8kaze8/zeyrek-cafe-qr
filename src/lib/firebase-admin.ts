@@ -1,21 +1,27 @@
-import { 
-  ref,
+import {
+  ref as dbRef,
   get,
   set,
   push,
   remove,
   query,
   orderByChild,
-  serverTimestamp
-} from 'firebase/database';
-import { db } from './firebase';
-import type { Category, Product } from '../types/menu';
+  serverTimestamp,
+} from "firebase/database";
+import { db } from "./firebase";
+import type { Category, Product } from "../types/menu";
+import { storage } from "./firebase";
+import {
+  ref as storageRef,
+  uploadBytes,
+  getDownloadURL,
+} from "firebase/storage";
 
 export const fetchCategories = async (): Promise<Category[]> => {
   try {
-    const categoriesRef = ref(db, 'categories');
-    const snapshot = await get(query(categoriesRef, orderByChild('order')));
-    
+    const categoriesRef = dbRef(db, "categories");
+    const snapshot = await get(query(categoriesRef, orderByChild("order")));
+
     if (!snapshot.exists()) {
       return [];
     }
@@ -24,22 +30,22 @@ export const fetchCategories = async (): Promise<Category[]> => {
     snapshot.forEach((childSnapshot) => {
       categories.push({
         id: childSnapshot.key as string,
-        ...childSnapshot.val()
+        ...childSnapshot.val(),
       });
     });
-    
+
     return categories.sort((a, b) => a.order - b.order);
   } catch (error) {
-    console.error('Error fetching categories:', error);
+    console.error("Error fetching categories:", error);
     throw error;
   }
 };
 
-export const addCategory = async (category: Omit<Category, 'id'>) => {
+export const addCategory = async (category: Omit<Category, "id">) => {
   try {
-    const categoriesRef = ref(db, 'categories');
+    const categoriesRef = dbRef(db, "categories");
     const newCategoryRef = push(categoriesRef);
-    
+
     const categoryData = {
       name_tr: category.name_tr.trim(),
       name_en: (category.name_en || category.name_tr).trim(),
@@ -47,46 +53,51 @@ export const addCategory = async (category: Omit<Category, 'id'>) => {
       order: Number(category.order) || 0,
       image_url: category.image_url?.trim() || null,
       created_at: serverTimestamp(),
-      updated_at: serverTimestamp()
+      updated_at: serverTimestamp(),
     };
 
     await set(newCategoryRef, categoryData);
     return { id: newCategoryRef.key, ...categoryData };
   } catch (error) {
-    console.error('Error adding category:', error);
+    console.error("Error adding category:", error);
     throw error;
   }
 };
 
-export const updateCategory = async (categoryId: string, updates: Partial<Category>) => {
+export const updateCategory = async (
+  categoryId: string,
+  updates: Partial<Category>
+) => {
   try {
-    const categoryRef = ref(db, `categories/${categoryId}`);
+    const categoryRef = dbRef(db, `categories/${categoryId}`);
     const updateData = {
       ...updates,
-      updated_at: serverTimestamp()
+      updated_at: serverTimestamp(),
     };
     await set(categoryRef, updateData);
   } catch (error) {
-    console.error('Error updating category:', error);
+    console.error("Error updating category:", error);
     throw error;
   }
 };
 
 export const deleteCategory = async (categoryId: string) => {
   try {
-    const categoryRef = ref(db, `categories/${categoryId}`);
+    const categoryRef = dbRef(db, `categories/${categoryId}`);
     await remove(categoryRef);
   } catch (error) {
-    console.error('Error deleting category:', error);
+    console.error("Error deleting category:", error);
     throw error;
   }
 };
 
-export const fetchProducts = async (categoryId?: string): Promise<Product[]> => {
+export const fetchProducts = async (
+  categoryId?: string
+): Promise<Product[]> => {
   try {
-    const productsRef = ref(db, 'products');
-    const snapshot = await get(query(productsRef, orderByChild('order')));
-    
+    const productsRef = dbRef(db, "products");
+    const snapshot = await get(query(productsRef, orderByChild("order")));
+
     if (!snapshot.exists()) {
       return [];
     }
@@ -95,25 +106,25 @@ export const fetchProducts = async (categoryId?: string): Promise<Product[]> => 
     snapshot.forEach((childSnapshot) => {
       const product = {
         id: childSnapshot.key as string,
-        ...childSnapshot.val()
+        ...childSnapshot.val(),
       };
       if (!categoryId || product.category_id === categoryId) {
         products.push(product);
       }
     });
-    
+
     return products.sort((a, b) => a.order - b.order);
   } catch (error) {
-    console.error('Error fetching products:', error);
+    console.error("Error fetching products:", error);
     throw error;
   }
 };
 
-export const addProduct = async (product: Omit<Product, 'id'>) => {
+export const addProduct = async (product: Omit<Product, "id">) => {
   try {
-    const productsRef = ref(db, 'products');
+    const productsRef = dbRef(db, "products");
     const newProductRef = push(productsRef);
-    
+
     const productData = {
       name_tr: product.name_tr.trim(),
       name_en: (product.name_en || product.name_tr).trim(),
@@ -126,37 +137,56 @@ export const addProduct = async (product: Omit<Product, 'id'>) => {
       order: Number(product.order) || 0,
       image_url: product.image_url?.trim() || null,
       created_at: serverTimestamp(),
-      updated_at: serverTimestamp()
+      updated_at: serverTimestamp(),
     };
 
     await set(newProductRef, productData);
     return { id: newProductRef.key, ...productData };
   } catch (error) {
-    console.error('Error adding product:', error);
+    console.error("Error adding product:", error);
     throw error;
   }
 };
 
-export const updateProduct = async (productId: string, updates: Partial<Product>) => {
+export const updateProduct = async (
+  productId: string,
+  updates: Partial<Product>
+) => {
   try {
-    const productRef = ref(db, `products/${productId}`);
+    const productRef = dbRef(db, `products/${productId}`);
     const updateData = {
       ...updates,
-      updated_at: serverTimestamp()
+      updated_at: serverTimestamp(),
     };
     await set(productRef, updateData);
   } catch (error) {
-    console.error('Error updating product:', error);
+    console.error("Error updating product:", error);
     throw error;
   }
 };
 
 export const deleteProduct = async (productId: string) => {
   try {
-    const productRef = ref(db, `products/${productId}`);
+    const productRef = dbRef(db, `products/${productId}`);
     await remove(productRef);
   } catch (error) {
-    console.error('Error deleting product:', error);
+    console.error("Error deleting product:", error);
     throw error;
   }
+};
+
+/**
+ * Uploads an image file to Firebase Storage and returns the download URL.
+ * @param file The image file to upload
+ * @param folder The folder in storage (e.g., 'categories' or 'products')
+ * @returns The download URL of the uploaded image
+ */
+export const uploadImageAndGetUrl = async (
+  file: File,
+  folder: string
+): Promise<string> => {
+  const fileName = `${folder}/${Date.now()}_${file.name}`;
+  const imageRef = storageRef(storage, fileName);
+  await uploadBytes(imageRef, file);
+  return getDownloadURL(imageRef);
 };
