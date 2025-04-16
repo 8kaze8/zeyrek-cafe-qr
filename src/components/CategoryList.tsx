@@ -132,19 +132,18 @@ export const CategoryList: React.FC<CategoryListProps> = ({
   }
   // horizontal (default)
   return (
-    <div className="flex gap-3 overflow-x-auto pb-3 -mx-1 px-1 scrollbar-hide">
+    <div className="flex gap-2 overflow-x-auto pb-3 -mx-1 px-1 scrollbar-hide">
       {categories.map((category) => (
         <button
           key={category.id}
           onClick={() => onSelectCategory(category.id)}
           className={clsx(
-            "relative flex flex-col items-center justify-center rounded-xl transition-all duration-300 overflow-hidden group",
-            "backdrop-blur-sm",
+            "relative flex-shrink-0 flex flex-col items-center justify-center rounded-xl transition-all duration-300 overflow-hidden group",
+            "backdrop-blur-sm w-[120px] h-[120px] min-w-[120px]",
             selectedCategory === category.id
               ? "bg-gradient-to-br from-[#4fa3e3]/90 to-[#2a4c7d]/90 text-white shadow-lg ring-2 ring-[#4fa3e3]"
               : "bg-gradient-to-br from-[#2a4c7d]/40 to-[#2a4c7d]/30 text-[#4fa3e3] hover:from-[#2a4c7d]/50 hover:to-[#2a4c7d]/40"
           )}
-          style={{ width: 120, height: 120 }}
         >
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
 

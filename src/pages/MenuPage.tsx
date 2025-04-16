@@ -111,7 +111,7 @@ export function MenuPage() {
 
           {/* Categories and Products */}
           <div className="space-y-8">
-            <div className="bg-gradient-to-br from-[#2a4c7d]/30 to-[#2a4c7d]/20 backdrop-blur-sm rounded-2xl p-2 shadow-lg border border-white/10">
+            <div className="bg-gradient-to-br from-[#2a4c7d]/30 to-[#2a4c7d]/20 backdrop-blur-sm rounded-2xl p-1.5 shadow-lg border border-white/10 overflow-hidden">
               <CategoryList
                 categories={categories}
                 selectedCategory={selectedCategory}
