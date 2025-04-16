@@ -4,18 +4,15 @@ import { getStorage } from "firebase/storage";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBBrmTSYLpQ91PhqyrOU1uvun2gdE_xCtg",
-  authDomain: "zeyrek-cafe-qr.firebaseapp.com",
-  projectId: "zeyrek-cafe-qr",
-  storageBucket: "zeyrek-cafe-qr.firebasestorage.app",
-  messagingSenderId: "51367985923",
-  appId: "1:51367985923:web:0d3eca653dda5a3bbc5f36",
-  measurementId: "G-TSPVJGF49S",
-  databaseURL:
-    "https://zeyrek-cafe-qr-default-rtdb.europe-west1.firebasedatabase.app",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
 };
 
+// Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const db = getDatabase(app);
-export const auth = getAuth(app);
 export const storage = getStorage(app);
+export const auth = getAuth(app);
