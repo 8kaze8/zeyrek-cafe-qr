@@ -98,15 +98,7 @@ export function MenuPage() {
         {/* Menu Section */}
         <div className="relative w-full max-w-2xl mx-auto px-4 sm:px-6 pb-12 z-10">
           {/* Menu Header */}
-          <div className="flex flex-col sm:flex-row items-center sm:justify-between gap-4 mb-8">
-            <div className="flex items-center gap-3">
-              <div className="p-2.5 bg-gradient-to-br from-[#2a4c7d]/60 to-[#2a4c7d]/40 rounded-xl backdrop-blur-sm shadow-lg border border-white/10">
-                <Utensils className="w-5 h-5 text-[#4fa3e3]" />
-              </div>
-              <h2 className="text-xl sm:text-2xl font-semibold text-[#4fa3e3] tracking-wide">
-                Menü
-              </h2>
-            </div>
+          <div className="flex flex-col sm:flex-row items-center sm:justify-end gap-4 mb-8">
             <LanguageSelector
               selectedLanguage={selectedLanguage}
               onLanguageChange={setSelectedLanguage}
