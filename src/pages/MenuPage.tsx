@@ -5,7 +5,6 @@ import { LanguageSelector } from "../components/LanguageSelector";
 import { fetchCategories, fetchProducts } from "../lib/firebase-admin";
 import type { Category, Product, Language } from "../types/menu";
 import toast from "react-hot-toast";
-import { Utensils } from "lucide-react";
 import logo from "../assets/logo/zeyrek-cafe-logo.svg";
 
 export function MenuPage() {
