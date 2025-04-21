@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import { ProductList } from "../components/ProductList";
 import { ProductForm } from "../components/ProductForm";
 import { Layout } from "../components/Layout";
-import { fetchProducts, fetchCategories } from "../lib/firebase-admin";
+import {
+  fetchProducts,
+  fetchCategories,
+  updateAllProductsToActive,
+} from "../lib/firebase-admin";
 import type { Product, Category, Language } from "../types/menu";
 import toast from "react-hot-toast";
 import { CategoryList } from "../components/CategoryList";
@@ -34,6 +38,14 @@ export function ProductsPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    const init = async () => {
+      await updateAllProductsToActive();
+      await fetchProducts(); // Refresh the products list
+    };
+    init();
+  }, []);
 
   useEffect(() => {
     loadData();

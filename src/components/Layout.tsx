@@ -1,14 +1,14 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import { 
-  LayoutDashboard, 
-  List, 
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import {
+  LayoutDashboard,
+  List,
   Coffee,
   LogOut,
-  Menu as MenuIcon
-} from 'lucide-react';
-import { useState } from 'react';
-import { clsx } from 'clsx';
+  Menu as MenuIcon,
+} from "lucide-react";
+import { useState } from "react";
+import { clsx } from "clsx";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -21,17 +21,17 @@ export const Layout = ({ children }: LayoutProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navigation = [
-    { name: 'Panel', href: '/dashboard', icon: LayoutDashboard },
-    { name: 'Kategoriler', href: '/categories', icon: List },
-    { name: 'Ürünler', href: '/products', icon: Coffee },
+    { name: "Panel", href: "/admin", icon: LayoutDashboard },
+    { name: "Kategoriler", href: "/categories", icon: List },
+    { name: "Ürünler", href: "/products", icon: Coffee },
   ];
 
   const handleSignOut = async () => {
     try {
       await signOut();
-      navigate('/login');
+      navigate("/login");
     } catch (error) {
-      console.error('Çıkış yapılamadı:', error);
+      console.error("Çıkış yapılamadı:", error);
     }
   };
 
@@ -68,17 +68,17 @@ export const Layout = ({ children }: LayoutProps) => {
                   to={item.href}
                   className={clsx(
                     location.pathname === item.href
-                      ? 'bg-gray-900 text-white'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "group flex items-center px-2 py-2 text-base font-medium rounded-md"
                   )}
                 >
                   <Icon
                     className={clsx(
                       location.pathname === item.href
-                        ? 'text-red-500'
-                        : 'text-gray-400 group-hover:text-gray-300',
-                      'mr-4 flex-shrink-0 h-6 w-6'
+                        ? "text-red-500"
+                        : "text-gray-400 group-hover:text-gray-300",
+                      "mr-4 flex-shrink-0 h-6 w-6"
                     )}
                   />
                   {item.name}
@@ -99,10 +99,12 @@ export const Layout = ({ children }: LayoutProps) => {
       </aside>
 
       {/* Main content */}
-      <div className={clsx(
-        "lg:pl-64 flex flex-col min-h-screen",
-        "pt-16 lg:pt-0" // Add padding top on mobile for the menu button
-      )}>
+      <div
+        className={clsx(
+          "lg:pl-64 flex flex-col min-h-screen",
+          "pt-16 lg:pt-0" // Add padding top on mobile for the menu button
+        )}
+      >
         <main className="flex-1 p-6">{children}</main>
       </div>
 

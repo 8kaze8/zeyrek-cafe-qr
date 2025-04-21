@@ -1,4 +1,4 @@
-export type Language = 'tr' | 'en' | 'ar';
+export type Language = "tr" | "en" | "ar";
 
 export interface Category {
   id: string;
@@ -9,16 +9,19 @@ export interface Category {
   image_url?: string;
 }
 
-export interface Product {
+export type Product = {
   id: string;
-  category_id: string;
   name_tr: string;
-  name_en: string;
-  name_ar: string;
-  description_tr?: string;
-  description_en?: string;
-  description_ar?: string;
+  name_en: string | null;
+  name_ar: string | null;
+  description_tr: string | null;
+  description_en: string | null;
+  description_ar: string | null;
+  category_id: string;
   price: number;
-  image_url?: string;
   order: number;
-}
+  image_url: string | null;
+  is_active: boolean;
+  created_at?: any;
+  updated_at?: any;
+};

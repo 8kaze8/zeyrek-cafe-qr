@@ -129,9 +129,18 @@ export const ProductList: React.FC<ProductListProps> = ({
         {products.map((product) => (
           <div
             key={product.id}
-            className="group relative bg-[#2a4c7d]/15 rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-500 backdrop-blur-sm border border-[#4fa3e3]/30 cursor-pointer"
             onClick={() => handleProductClick(product)}
+            className={`relative bg-gray-800 rounded-lg shadow-lg overflow-hidden cursor-pointer transition-all duration-200 hover:shadow-xl hover:scale-[1.02] ${
+              mode === "admin" && !(product.is_active ?? true)
+                ? "opacity-50 border border-gray-600"
+                : ""
+            }`}
           >
+            {mode === "admin" && !(product.is_active ?? true) && (
+              <div className="absolute top-2 right-2 bg-gray-900 text-gray-400 px-2 py-1 rounded text-xs">
+                Pasif
+              </div>
+            )}
             <div className="aspect-[4/3] relative">
               <img
                 src={

@@ -1,15 +1,13 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import { Lock } from 'lucide-react';
-import toast from 'react-hot-toast';
-import { createAdminUser } from '../lib/createAdmin';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import { Lock } from "lucide-react";
+import toast from "react-hot-toast";
 
 export const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [creatingAdmin, setCreatingAdmin] = useState(false);
   const { signIn } = useAuth();
   const navigate = useNavigate();
 
@@ -19,25 +17,11 @@ export const LoginPage = () => {
 
     try {
       await signIn(email, password);
-      navigate('/dashboard');
+      navigate("/admin");
     } catch (error) {
-      toast.error('Geçersiz e-posta veya şifre');
+      toast.error("Geçersiz e-posta veya şifre");
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleCreateAdmin = async () => {
-    if (creatingAdmin) return;
-    
-    setCreatingAdmin(true);
-    try {
-      await createAdminUser('admin@example.com', 'admin123');
-      toast.success('Admin hesabı oluşturuldu! admin@example.com ve admin123 ile giriş yapabilirsiniz');
-    } catch (error: any) {
-      toast.error(error.message || 'Admin hesabı oluşturulamadı');
-    } finally {
-      setCreatingAdmin(false);
     }
   };
 
@@ -47,7 +31,9 @@ export const LoginPage = () => {
         <div className="text-center">
           <Lock className="mx-auto h-12 w-12 text-red-500" />
           <h2 className="mt-6 text-3xl font-bold text-white">Admin Paneli</h2>
-          <p className="mt-2 text-sm text-gray-400">Menünüzü yönetmek için giriş yapın</p>
+          <p className="mt-2 text-sm text-gray-400">
+            Menünüzü yönetmek için giriş yapın
+          </p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
@@ -85,23 +71,13 @@ export const LoginPage = () => {
             </div>
           </div>
 
-          <div className="space-y-3">
+          <div>
             <button
               type="submit"
               disabled={loading}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Giriş yapılıyor...' : 'Giriş Yap'}
-            </button>
-
-            {/* Create Admin Button - Remove in production */}
-            <button
-              type="button"
-              onClick={handleCreateAdmin}
-              disabled={creatingAdmin}
-              className="w-full flex justify-center py-2 px-4 border border-gray-600 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {creatingAdmin ? 'Admin Oluşturuluyor...' : 'Admin Hesabı Oluştur'}
+              {loading ? "Giriş yapılıyor..." : "Giriş Yap"}
             </button>
           </div>
         </form>

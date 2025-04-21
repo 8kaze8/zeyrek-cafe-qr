@@ -20,14 +20,15 @@ function App() {
       <AuthProvider>
         <Router>
           <Routes>
-            <Route path="/menu" element={<MenuPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route element={<ProtectedRoute />}>
-              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/admin" element={<DashboardPage />} />
               <Route path="/categories" element={<CategoriesPage />} />
               <Route path="/products" element={<ProductsPage />} />
-              <Route path="/" element={<Navigate to="/dashboard" replace />} />
             </Route>
+            {/* Ana sayfa ve tanımsız rotaları menüye yönlendir */}
+            <Route path="/" element={<MenuPage />} />
+            <Route path="*" element={<Navigate to="/menu" replace />} />
           </Routes>
         </Router>
         <Toaster position="top-right" />

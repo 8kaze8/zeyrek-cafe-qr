@@ -1,12 +1,13 @@
 import {
-  ref as dbRef,
-  get,
-  set,
+  ref,
   push,
+  update,
   remove,
   query,
   orderByChild,
   serverTimestamp,
+  get,
+  set,
 } from "firebase/database";
 import { db } from "./firebase";
 import type { Category, Product } from "../types/menu";
@@ -19,7 +20,7 @@ import {
 
 export const fetchCategories = async (): Promise<Category[]> => {
   try {
-    const categoriesRef = dbRef(db, "categories");
+    const categoriesRef = ref(db, "categories");
     const snapshot = await get(query(categoriesRef, orderByChild("order")));
 
     if (!snapshot.exists()) {
@@ -43,7 +44,7 @@ export const fetchCategories = async (): Promise<Category[]> => {
 
 export const addCategory = async (category: Omit<Category, "id">) => {
   try {
-    const categoriesRef = dbRef(db, "categories");
+    const categoriesRef = ref(db, "categories");
     const newCategoryRef = push(categoriesRef);
 
     const categoryData = {
@@ -69,7 +70,7 @@ export const updateCategory = async (
   updates: Partial<Category>
 ) => {
   try {
-    const categoryRef = dbRef(db, `categories/${categoryId}`);
+    const categoryRef = ref(db, `categories/${categoryId}`);
     const updateData = {
       ...updates,
       updated_at: serverTimestamp(),
@@ -83,7 +84,7 @@ export const updateCategory = async (
 
 export const deleteCategory = async (categoryId: string) => {
   try {
-    const categoryRef = dbRef(db, `categories/${categoryId}`);
+    const categoryRef = ref(db, `categories/${categoryId}`);
     await remove(categoryRef);
   } catch (error) {
     console.error("Error deleting category:", error);
@@ -95,7 +96,7 @@ export const fetchProducts = async (
   categoryId?: string
 ): Promise<Product[]> => {
   try {
-    const productsRef = dbRef(db, "products");
+    const productsRef = ref(db, "products");
     const snapshot = await get(query(productsRef, orderByChild("order")));
 
     if (!snapshot.exists()) {
@@ -122,7 +123,7 @@ export const fetchProducts = async (
 
 export const addProduct = async (product: Omit<Product, "id">) => {
   try {
-    const productsRef = dbRef(db, "products");
+    const productsRef = ref(db, "products");
     const newProductRef = push(productsRef);
 
     const productData = {
@@ -153,12 +154,12 @@ export const updateProduct = async (
   updates: Partial<Product>
 ) => {
   try {
-    const productRef = dbRef(db, `products/${productId}`);
+    const productRef = ref(db, `products/${productId}`);
     const updateData = {
       ...updates,
       updated_at: serverTimestamp(),
     };
-    await set(productRef, updateData);
+    await update(productRef, updateData);
   } catch (error) {
     console.error("Error updating product:", error);
     throw error;
@@ -167,7 +168,7 @@ export const updateProduct = async (
 
 export const deleteProduct = async (productId: string) => {
   try {
-    const productRef = dbRef(db, `products/${productId}`);
+    const productRef = ref(db, `products/${productId}`);
     await remove(productRef);
   } catch (error) {
     console.error("Error deleting product:", error);
@@ -189,4 +190,21 @@ export const uploadImageAndGetUrl = async (
   const imageRef = storageRef(storage, fileName);
   await uploadBytes(imageRef, file);
   return getDownloadURL(imageRef);
+};
+
+export const updateAllProductsToActive = async () => {
+  const productsRef = ref(db, "products");
+  const snapshot = await get(productsRef);
+
+  if (snapshot.exists()) {
+    const updates: { [key: string]: any } = {};
+    snapshot.forEach((child) => {
+      const productData = child.val();
+      updates[child.key as string] = {
+        ...productData,
+        is_active: true,
+      };
+    });
+    await update(productsRef, updates);
+  }
 };

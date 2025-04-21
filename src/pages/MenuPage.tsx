@@ -39,8 +39,12 @@ export function MenuPage() {
   }, []);
 
   const filteredProducts = selectedCategory
-    ? products.filter((product) => product.category_id === selectedCategory)
-    : products;
+    ? products.filter(
+        (product) =>
+          product.category_id === selectedCategory &&
+          (product.is_active ?? true)
+      )
+    : products.filter((product) => product.is_active ?? true);
 
   if (loading) {
     return (
