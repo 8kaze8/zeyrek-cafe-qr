@@ -6,7 +6,8 @@ import { fetchCategories, fetchProducts } from "../lib/firebase-admin";
 import type { Category, Product, Language } from "../types/menu";
 import toast from "react-hot-toast";
 import logo from "../assets/logo/zeyrek-cafe-logo.svg";
-import backgroundImage from "../assets/background/arkaplan.png";
+
+const BACKGROUND_URL = "https://i.ibb.co/nq9CPtG8/arkaplan.png";
 
 export function MenuPage() {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -68,7 +69,7 @@ export function MenuPage() {
       <div
         className="absolute inset-0 z-0 min-h-full w-full bg-repeat-y bg-[length:100%_auto] sm:bg-cover bg-top"
         style={{
-          backgroundImage: `url(${backgroundImage})`,
+          backgroundImage: `url(${BACKGROUND_URL})`,
           minHeight: "100%",
           height: "auto",
         }}
