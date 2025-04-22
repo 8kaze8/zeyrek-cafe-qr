@@ -1,0 +1,225 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Size Cursor için detaylı bir project rules oluşturacağım:
+
+```markdown
+# Project Rules - Zeyrek Cafe QR Menu
+
+## 🌟 General Development Guidelines
+
+### Mobile-First Development
+- Always start with mobile design first
+- Test all features on mobile devices before desktop
+- Maintain responsive breakpoints: 
+  - Mobile: < 640px
+  - Tablet: 640px - 1024px
+  - Desktop: > 1024px
+
+### Code Structure
+- Keep components in appropriate directories
+- Follow existing naming conventions
+- Maintain type safety with TypeScript
+- Use proper imports and exports
+
+### Component Development
+- Do not modify shared components without explicit permission
+- Keep components isolated and independent
+- Follow single responsibility principle
+- Maintain existing component structure
+
+## 🎨 UI/UX Guidelines
+
+### Design Language
+- Follow existing design patterns
+- Use current color scheme:
+  ```css
+  --primary: #4fa3e3
+  --secondary: #2a4c7d
+  --background: #1a1f35
+  --text-primary: #ffffff
+  --text-secondary: #f7e7d3
+  ```
+- Maintain current styling approach
+- Use existing animation patterns
+
+### Style Modifications
+- Make minimal style changes unless specified
+- Keep consistent spacing and padding
+- Follow existing Tailwind class patterns
+- Maintain current responsive design approach
+
+## 🛠 Development Rules
+
+### 1. File Structure
+```
+src/
+  ├── components/     # Reusable components
+  ├── pages/         # Page components
+  ├── contexts/      # Context providers
+  ├── lib/           # Utilities and services
+  ├── types/         # TypeScript definitions
+  └── assets/        # Static assets
+```
+
+### 2. Naming Conventions
+- Components: PascalCase (e.g., `ProductCard.tsx`)
+- Files: kebab-case (e.g., `firebase-admin.ts`)
+- Functions: camelCase (e.g., `handleSubmit`)
+- Types/Interfaces: PascalCase (e.g., `interface ProductType`)
+
+### 3. Code Style
+```typescript
+// Component Template
+import React from 'react';
+import type { ComponentType } from '../types';
+
+interface Props {
+  // Props definition
+}
+
+export const ComponentName: React.FC<Props> = ({ prop1, prop2 }) => {
+  // Component logic
+
+  return (
+    // JSX
+  );
+};
+```
+
+## 🚫 Prohibited Actions
+
+1. DO NOT:
+   - Modify shared components without permission
+   - Change existing color schemes unless specified
+   - Alter the current responsive design system
+   - Modify Firebase configuration
+   - Change authentication flow
+   - Alter existing type definitions
+
+2. NEVER:
+   - Push directly to main/master branch
+   - Modify production environment variables
+   - Change existing API endpoints
+   - Alter database schema without approval
+   - Remove existing features without permission
+
+## ✅ Required Practices
+
+### 1. Code Quality
+- Write clean, readable code
+- Add proper comments for complex logic
+- Follow TypeScript best practices
+- Maintain proper error handling
+
+### 2. Performance
+- Optimize images before upload
+- Minimize re-renders
+- Use proper loading states
+- Implement proper caching
+
+### 3. Testing
+- Test on multiple devices
+- Verify mobile responsiveness
+- Check cross-browser compatibility
+- Validate form inputs
+
+### 4. Security
+- Follow Firebase security rules
+- Implement proper data validation
+- Use secure authentication methods
+- Protect sensitive information
+
+## 📱 Mobile-First Checklist
+
+Before submitting any changes:
+
+1. Mobile View (320px - 640px)
+   - [ ] All elements are properly visible
+   - [ ] No horizontal scrolling
+   - [ ] Touch targets are adequate size
+   - [ ] Forms are usable on mobile
+
+2. Tablet View (640px - 1024px)
+   - [ ] Layout adjusts appropriately
+   - [ ] Images scale correctly
+   - [ ] Navigation is functional
+
+3. Desktop View (>1024px)
+   - [ ] Layout maximizes screen space
+   - [ ] Hover states work correctly
+   - [ ] Performance is optimized
+
+## 🔄 Version Control
+
+### Commit Messages
+```
+feat: Add new feature
+fix: Bug fix
+style: Style update
+refactor: Code refactoring
+docs: Documentation updates
+test: Adding tests
+```
+
+### Branch Naming
+```
+feature/feature-name
+bugfix/bug-description
+hotfix/urgent-fix
+release/version-number
+```
+
+## 📝 Documentation Requirements
+
+1. Code Documentation
+   - Add JSDoc comments for functions
+   - Document complex logic
+   - Update README when needed
+   - Maintain type definitions
+
+2. Change Documentation
+   - List modified files
+   - Explain changes made
+   - Document any new dependencies
+   - Note any breaking changes
+
+## 🚀 Deployment Guidelines
+
+1. Pre-deployment Checklist
+   - [ ] All tests pass
+   - [ ] Mobile-first approach verified
+   - [ ] No console errors
+   - [ ] Performance metrics checked
+   - [ ] Security rules verified
+
+2. Environment Variables
+   - Use proper env variables
+   - Never commit sensitive data
+   - Maintain separate configs for dev/prod
+
+## 💻 Development Workflow
+
+1. Starting New Feature
+   - Create new branch
+   - Follow mobile-first approach
+   - Implement feature
+   - Test thoroughly
+   - Submit PR
+
+2. Making Changes
+   - Verify scope of change
+   - Make isolated modifications
+   - Test on mobile first
+   - Maintain existing patterns
+   - Document changes
+
+3. Code Review
+   - Check mobile responsiveness
+   - Verify isolated changes
+   - Confirm no side effects
+   - Test all breakpoints
+```
+

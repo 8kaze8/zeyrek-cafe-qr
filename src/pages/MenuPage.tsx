@@ -6,6 +6,7 @@ import { fetchCategories, fetchProducts } from "../lib/firebase-admin";
 import type { Category, Product, Language } from "../types/menu";
 import toast from "react-hot-toast";
 import logo from "../assets/logo/zeyrek-cafe-logo.svg";
+import backgroundImage from "../assets/background/arkaplan.png";
 
 export function MenuPage() {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -62,42 +63,41 @@ export function MenuPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center bg-[#6d2323] relative overflow-hidden">
-      {/* Modern Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#6d2323] via-[#541b1b] to-[#3a1010]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(43,16,16,0.4),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_-20%,rgba(255,255,255,0.1),transparent_25%)]" />
-      </div>
-
-      {/* Subtle Light Effects */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-br from-[#8b2929]/20 to-transparent" />
-        <div className="absolute bottom-0 right-0 w-full h-[500px] bg-gradient-to-tl from-[#2a4c7d]/10 to-transparent" />
+    <div className="min-h-screen flex flex-col items-center relative overflow-hidden">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 z-0 min-h-full w-full bg-repeat-y bg-[length:100%_auto] sm:bg-cover bg-top"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          minHeight: "100%",
+          height: "auto",
+        }}
+      >
+        <div className="absolute inset-0 min-h-full bg-black/10 h-full" />
       </div>
 
       {/* Content Container */}
-      <div className="relative w-full min-h-screen flex flex-col items-center">
+      <div className="relative w-full min-h-screen flex flex-col items-center z-10 px-2 sm:px-4">
         {/* Header Section */}
-        <div className="relative w-full flex flex-col items-center pt-8 pb-4 px-2">
+        <div className="relative w-full flex flex-col items-center pt-4 sm:pt-8 pb-4">
           <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-br from-[#f7e7d3]/10 to-[#4fa3e3]/5 rounded-full blur-xl" />
+            <div className="absolute -inset-1 bg-gradient-to-br from-[#f7e7d3]/5 to-[#4fa3e3]/5 rounded-full blur-xl" />
             <img
               src={logo}
               alt="Zeyrek Cafe Logo"
-              className="w-32 h-32 sm:w-44 sm:h-44 object-contain drop-shadow-2xl relative"
-              style={{ maxWidth: 200 }}
+              className="w-24 h-24 sm:w-32 sm:h-32 md:w-44 md:h-44 object-contain drop-shadow-2xl relative"
+              style={{ maxWidth: "100%" }}
             />
           </div>
-          <p className="text-base sm:text-lg font-medium text-[#f7e7d3] mb-2 text-center px-2 mt-6 max-w-md mx-auto leading-relaxed tracking-wide">
+          <p className="text-sm sm:text-base md:text-lg font-medium text-[#f7e7d3] mb-2 text-center mt-4 sm:mt-6 max-w-md mx-auto leading-relaxed tracking-wide drop-shadow-lg">
             Eşsiz lezzetlerin ve keyifli anların adresi
           </p>
         </div>
 
         {/* Menu Section */}
-        <div className="relative w-full max-w-2xl mx-auto px-4 sm:px-6 pb-12 z-10">
+        <div className="relative w-full max-w-2xl mx-auto px-0 sm:px-4 pb-8 sm:pb-12">
           {/* Menu Header */}
-          <div className="flex flex-col sm:flex-row items-center sm:justify-end gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row items-center sm:justify-end gap-2 sm:gap-4 mb-4 sm:mb-8">
             <LanguageSelector
               selectedLanguage={selectedLanguage}
               onLanguageChange={setSelectedLanguage}
@@ -105,8 +105,8 @@ export function MenuPage() {
           </div>
 
           {/* Categories and Products */}
-          <div className="space-y-8">
-            <div className="bg-gradient-to-br from-[#2a4c7d]/30 to-[#2a4c7d]/20 backdrop-blur-sm rounded-2xl p-1.5 shadow-lg border border-white/10 overflow-hidden">
+          <div className="space-y-4 sm:space-y-8">
+            <div className="bg-gradient-to-br from-[#2a4c7d]/20 to-[#2a4c7d]/10 backdrop-blur-[2px] rounded-xl sm:rounded-2xl p-1 sm:p-1.5 shadow-lg border border-white/10 overflow-hidden mx-1 sm:mx-0">
               <CategoryList
                 categories={categories}
                 selectedCategory={selectedCategory}
@@ -117,8 +117,7 @@ export function MenuPage() {
               />
             </div>
 
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#6d2323]/30 to-[#6d2323] pointer-events-none" />
+            <div className="relative px-1 sm:px-0">
               <ProductList
                 products={filteredProducts}
                 selectedLanguage={selectedLanguage}
