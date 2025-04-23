@@ -5,6 +5,28 @@ import { ProductForm } from "./ProductForm";
 import { Category } from "../types/menu";
 import translations from "../../translations.json";
 
+// Arapça rakam dönüşümü için yardımcı fonksiyon
+const convertToArabicNumerals = (num: number): string => {
+  const arabicNumbers = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
+  return num
+    .toString()
+    .split("")
+    .map((digit) => {
+      if (digit === ".") return "٫"; // Arapça ondalık ayracı
+      return arabicNumbers[parseInt(digit)] || digit;
+    })
+    .join("");
+};
+
+// Fiyat formatlama fonksiyonu
+const formatPrice = (price: number, language: Language): string => {
+  const formattedPrice = price.toFixed(2);
+  if (language === "ar") {
+    return convertToArabicNumerals(parseFloat(formattedPrice));
+  }
+  return formattedPrice;
+};
+
 interface ProductListProps {
   products: Product[];
   selectedLanguage: Language;
@@ -24,43 +46,69 @@ const ProductModal: React.FC<ProductModalProps> = ({
   selectedLanguage,
   onClose,
 }) => {
+  // ESC tuşu için event listener
   React.useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "auto";
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
     };
-  }, []);
+
+    // Overflow ve event listener'ı ekle
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', handleEscKey);
+
+    // Cleanup
+    return () => {
+      document.body.style.overflow = 'auto';
+      document.removeEventListener('keydown', handleEscKey);
+    };
+  }, [onClose]);
+
+  // Modal dışına tıklama
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
 
   return (
-    <div
+    <div 
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4 py-6"
-      onClick={onClose}
+      onClick={handleBackdropClick}
     >
-      <div
+      <div 
         className="relative w-full max-w-lg rounded-3xl bg-gradient-to-b from-[#23283b] to-[#1a1f2e] shadow-2xl overflow-hidden animate-fadeIn border border-white/10"
-        onClick={(e) => e.stopPropagation()}
+        onClick={e => e.stopPropagation()}
       >
         <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-white/80 hover:text-white bg-black/20 hover:bg-black/40 transition-colors rounded-full w-10 h-10 flex items-center justify-center shadow-lg z-10 backdrop-blur-sm"
+          type="button"
+          onClick={e => {
+            e.stopPropagation();
+            onClose();
+          }}
+          className="absolute top-4 right-4 text-white/80 hover:text-white bg-black/20 hover:bg-black/40 transition-colors rounded-full w-10 h-10 flex items-center justify-center shadow-lg z-10 backdrop-blur-sm cursor-pointer"
           aria-label={translations.close_button[selectedLanguage]}
         >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 22 22"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="scale-90"
-          >
-            <path
-              d="M6 6L16 16M16 6L6 16"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-            />
-          </svg>
+          <div className="pointer-events-none">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="scale-90"
+            >
+              <path
+                d="M6 6L16 16M16 6L6 16"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
         </button>
+
         <div className="relative w-full aspect-[4/3] overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black" />
           <img
@@ -75,7 +123,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
         <div className="relative px-6 pb-6 pt-4">
           <div className="absolute -top-12 right-6 z-10">
             <div className="bg-[#4fa3e3] text-white px-6 py-2 rounded-2xl shadow-lg text-xl font-bold">
-              ₺{product.price.toFixed(2)}
+              ₺{formatPrice(product.price, selectedLanguage)}
             </div>
           </div>
           <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 mt-2">
@@ -179,7 +227,7 @@ export const ProductList: React.FC<ProductListProps> = ({
               )}
               <div className="flex justify-between items-center">
                 <span className="text-2xl font-bold text-white">
-                  ₺{product.price.toFixed(2)}
+                  ₺{formatPrice(product.price, selectedLanguage)}
                 </span>
               </div>
             </div>
