@@ -1,722 +1,501 @@
 {
-  "menu": {
-    "header": {
-      "tagline": {
-        "tr": "Eşsiz lezzetlerin ve keyifli anların adresi",
-        "en": "Where unique flavors meet delightful moments",
-        "ar": "نكهات فريدة، ولحظات لا تُنسى"
-      },
-      "title": {
-        "tr": "Menü",
-        "en": "Menu",
-        "ar": "القائمة"
-      }
+  "tagline": {
+    "tr": "Eşsiz lezzetlerin ve keyifli anların adresi",
+    "en": "Where unique flavors meet delightful moments",
+    "ar": "نكهات فريدة، ولحظات لا تُنسى"
+  },
+  "empty_state": {
+    "tr": "Bu kategoride henüz ürün bulunmamaktadır",
+    "en": "There are no products in this category yet",
+    "ar": "لا توجد منتجات ضمن هذه الفئة حالياً"
+  },
+  "close_button": {
+    "tr": "Kapat",
+    "en": "Close",
+    "ar": "إغلاق"
+  },
+  "inactive_label": {
+    "tr": "Pasif",
+    "en": "Inactive",
+    "ar": "غير متوفر"
+  },
+  "menu_load_error": {
+    "tr": "Menü yüklenirken bir hata oluştu",
+    "en": "An error occurred while loading the menu",
+    "ar": "حدث خطأ أثناء تحميل القائمة"
+  },
+  "categories": {
+    "gunun_corbasi": {
+      "tr": "Günün Çorbası",
+      "en": "Soup of the Day",
+      "ar": "شوربة اليوم"
     },
-    "categories": {
-      "empty_state": {
-        "tr": "Bu kategoride henüz ürün bulunmamaktadır",
-        "en": "There are no products in this category yet",
-        "ar": "لا توجد منتجات ضمن هذه الفئة حالياً"
-      },
-      "title": {
-        "tr": "Kategoriler",
-        "en": "Categories",
-        "ar": "الفئات"
-      }
+    "tost_cesitleri": {
+      "tr": "Tost Çeşitleri",
+      "en": "Toasts",
+      "ar": "توست"
     },
-    "product": {
-      "close_button": {
-        "tr": "Kapat",
-        "en": "Close",
-        "ar": "إغلاق"
-      },
-      "price_prefix": "₺",
-      "inactive_label": {
-        "tr": "Pasif",
-        "en": "Inactive",
-        "ar": "غير متوفر"
-      },
-      "inactive": {
-        "tr": "Stokta Yok",
-        "en": "Out of Stock",
-        "ar": "غير متوفر"
-      }
+    "kahvaltilar": {
+      "tr": "Kahvaltılar",
+      "en": "Breakfast",
+      "ar": "فطور"
     },
-    "errors": {
-      "menu_load_error": {
-        "tr": "Menü yüklenirken bir hata oluştu",
-        "en": "An error occurred while loading the menu",
-        "ar": "حدث خطأ أثناء تحميل القائمة"
-      },
-      "no_products": {
-        "tr": "Bu kategoride ürün bulunamadı.",
-        "en": "No products found in this category.",
-        "ar": "لا توجد منتجات في هذه الفئة."
-      }
+    "izgaralar": {
+      "tr": "Izgaralar",
+      "en": "Grilled Dishes",
+      "ar": "مشاوي"
     },
-    "dynamic_content": {
-      "categories": {
-        "gunun_corbasi": {
-          "name": {
-            "tr": "Günün Çorbası",
-            "en": "Soup of the Day",
-            "ar": "شوربة اليوم"
-          }
-        },
-        "tost_cesitleri": {
-          "name": {
-            "tr": "Tost Çeşitleri",
-            "en": "Types of Toast",
-            "ar": "توست"
-          }
-        },
-        "kahvaltilar": {
-          "name": {
-            "tr": "Kahvaltılar",
-            "en": "Breakfasts",
-            "ar": "فطور"
-          }
-        },
-        "izgaralar": {
-          "name": {
-            "tr": "Izgaralar",
-            "en": "Grills",
-            "ar": "مشاوي"
-          }
-        },
-        "ana_yemekler": {
-          "name": {
-            "tr": "Ana Yemekler",
-            "en": "Main Dishes",
-            "ar": "الأطباق الرئيسية"
-          }
-        },
-        "makarnalar": {
-          "name": {
-            "tr": "Makarnalar",
-            "en": "Pasta",
-            "ar": "معكرونة"
-          }
-        },
-        "burgerler": {
-          "name": {
-            "tr": "Burgerler",
-            "en": "Burgers",
-            "ar": "برغر"
-          }
-        },
-        "pizza_cesitleri": {
-          "name": {
-            "tr": "Pizza Çeşitleri",
-            "en": "Pizzas",
-            "ar": "بيتزا"
-          }
-        },
-        "tatlilar": {
-          "name": {
-            "tr": "Tatlılar",
-            "en": "Desserts",
-            "ar": "حلويات"
-          }
-        },
-        "waffle_krepler": {
-          "name": {
-            "tr": "Waffle & Krepler",
-            "en": "Waffles & Crêpes",
-            "ar": "وافل وكريب"
-          }
-        },
-        "pastalar": {
-          "name": {
-            "tr": "Pastalar",
-            "en": "Cakes",
-            "ar": "كعك"
-          }
-        },
-        "vitamin_bar": {
-          "name": {
-            "tr": "Vitamin Bar",
-            "en": "Vitamin Bar",
-            "ar": "بار الفيتامينات"
-          }
-        },
-        "kahve_cesitleri": {
-          "name": {
-            "tr": "Kahve Çeşitleri",
-            "en": "Coffees",
-            "ar": "أنواع القهوة"
-          }
-        },
-        "soguk_kahve": {
-          "name": {
-            "tr": "Soğuk Kahve",
-            "en": "Iced Coffees",
-            "ar": "قهوة مثلجة"
-          }
-        },
-        "cay": {
-          "name": {
-            "tr": "Çay",
-            "en": "Tea",
-            "ar": "شاي"
-          }
-        },
-        "mojito": {
-          "name": {
-            "tr": "Mojito",
-            "en": "Mojitos",
-            "ar": "موهيتو"
-          }
-        },
-        "mesrubatlar": {
-          "name": {
-            "tr": "Meşrubatlar",
-            "en": "Soft Drinks",
-            "ar": "مشروبات باردة"
-          }
-        }
-      },
-      "products": {
-        "gunun_corbasi": {
-          "name": {
-            "tr": "Günün Çorbası",
-            "en": "Soup of the Day",
-            "ar": "شوربة اليوم"
-          }
-        },
-        "karisik_tost": {
-          "name": {
-            "tr": "Karışık Tost",
-            "en": "Mixed Toast",
-            "ar": "توست مشكل"
-          }
-        },
-        "kasarli_tost": {
-          "name": {
-            "tr": "Kaşarlı Tost",
-            "en": "Cheese Toast",
-            "ar": "توست بالجبن"
-          }
-        },
-        "serpme_kahvalti": {
-          "name": {
-            "tr": "Serpme Kahvaltı",
-            "en": "Mixed Breakfast",
-            "ar": "فطور تركي مشكّل"
-          }
-        },
-        "kahvalti_tabagi": {
-          "name": {
-            "tr": "Kahvaltı Tabağı",
-            "en": "Breakfast Platter",
-            "ar": "طبق فطور"
-          }
-        },
-        "ortadogu_kahvaltisi": {
-          "name": {
-            "tr": "Ortadoğu Kahvaltısı",
-            "en": "Middle Eastern Breakfast",
-            "ar": "فطور شرق أوسطي"
-          }
-        },
-        "omlet": {
-          "name": {
-            "tr": "Omlet",
-            "en": "Omelette",
-            "ar": "أومليت"
-          }
-        },
-        "menemen": {
-          "name": {
-            "tr": "Menemen",
-            "en": "Menemen",
-            "ar": "شكشوكة"
-          }
-        },
-        "patates_cipsi": {
-          "name": {
-            "tr": "Patates Cipsi",
-            "en": "French Fries",
-            "ar": "بطاطس مقلية"
-          }
-        },
-        "gozlemeler": {
-          "name": {
-            "tr": "Gözlemeler",
-            "en": "Gözleme",
-            "ar": "فطاير صاج"
-          }
-        },
-        "akcaabat_kofte": {
-          "name": {
-            "tr": "Akçaabat Köfte",
-            "en": "Akçaabat Meatball",
-            "ar": "كفتة أكشابات"
-          }
-        },
-        "tavuk_izgara": {
-          "name": {
-            "tr": "Tavuk Izgara",
-            "en": "Grilled Chicken",
-            "ar": "دجاج مشوي"
-          }
-        },
-        "tavuk_sis": {
-          "name": {
-            "tr": "Tavuk Şiş",
-            "en": "Chicken Shish Kebab",
-            "ar": "شيش دجاج"
-          }
-        },
-        "tavuk_sote": {
-          "name": {
-            "tr": "Tavuk Sote",
-            "en": "Chicken Sauté",
-            "ar": "دجاج سوتيه"
-          }
-        },
-        "et_sote": {
-          "name": {
-            "tr": "Et Sote",
-            "en": "Beef Sauté",
-            "ar": "لحم سوتيه"
-          }
-        },
-        "kori_soslu_tavuk": {
-          "name": {
-            "tr": "Köri Soslu Tavuk",
-            "en": "Chicken with Curry Sauce",
-            "ar": "دجاج بالكاري"
-          }
-        },
-        "et_fajita": {
-          "name": {
-            "tr": "Et Fajita",
-            "en": "Beef Fajita",
-            "ar": "فاهيتا لحم"
-          }
-        },
-        "tavuk_fajita": {
-          "name": {
-            "tr": "Tavuk Fajita",
-            "en": "Chicken Fajita",
-            "ar": "فاهيتا دجاج"
-          }
-        },
-        "tavuk_doner": {
-          "name": {
-            "tr": "Tavuk Döner",
-            "en": "Chicken Döner",
-            "ar": "شاورما دجاج"
-          }
-        },
-        "pilav": {
-          "name": {
-            "tr": "Pilav",
-            "en": "Rice Pilaf",
-            "ar": "أرز بسمتي"
-          }
-        },
-        "spaghetti_bolognese": {
-          "name": {
-            "tr": "Spaghetti Bolognese",
-            "en": "Spaghetti Bolognese",
-            "ar": "سباغيتي بولونيز"
-          }
-        },
-        "penne_arabiata": {
-          "name": {
-            "tr": "Penne Arabiata",
-            "en": "Penne Arrabbiata",
-            "ar": "بيني أرابياتا"
-          }
-        },
-        "tavuklu_fettuccine_alfredo": {
-          "name": {
-            "tr": "Tavuklu Fettuccine Alfredo",
-            "en": "Fettuccine Alfredo with Chicken",
-            "ar": "فيتوتشيني ألفريدو بالدجاج"
-          }
-        },
-        "sebzeli_noodle": {
-          "name": {
-            "tr": "Sebzeli Noodle",
-            "en": "Vegetable Noodles",
-            "ar": "نودلز بالخضار"
-          }
-        },
-        "tavuklu_noodle": {
-          "name": {
-            "tr": "Tavuklu Noodle",
-            "en": "Chicken Noodles",
-            "ar": "نودلز بالدجاج"
-          }
-        },
-        "zeyrek_special_burger": {
-          "name": {
-            "tr": "Zeyrek Special Burger",
-            "en": "Zeyrek Special Burger",
-            "ar": "برغر زيريك الخاص"
-          }
-        },
-        "et_burger": {
-          "name": {
-            "tr": "Et Burger",
-            "en": "Beef Burger",
-            "ar": "برغر لحم"
-          }
-        },
-        "tavuk_burger": {
-          "name": {
-            "tr": "Tavuk Burger",
-            "en": "Chicken Burger",
-            "ar": "برغر دجاج"
-          }
-        },
-        "sebzeli_pizza": {
-          "name": {
-            "tr": "Sebzeli Pizza",
-            "en": "Vegetable Pizza",
-            "ar": "بيتزا خضار"
-          }
-        },
-        "karisik_pizza": {
-          "name": {
-            "tr": "Karışık Pizza",
-            "en": "Mixed Pizza",
-            "ar": "بيتزا مشكلة"
-          }
-        },
-        "pizza_margarita": {
-          "name": {
-            "tr": "Pizza Margarita",
-            "en": "Pizza Margherita",
-            "ar": "بيتزا مارغريتا"
-          }
-        },
-        "sutlac": {
-          "name": {
-            "tr": "Sütlaç",
-            "en": "Sütlaç",
-            "ar": "سوتلاش"
-          }
-        },
-        "kunefe": {
-          "name": {
-            "tr": "Künefe",
-            "en": "Künefe",
-            "ar": "كنافة"
-          }
-        },
-        "baklava": {
-          "name": {
-            "tr": "Baklava",
-            "en": "Baklava",
-            "ar": "بقلاوة"
-          }
-        },
-        "waffle": {
-          "name": {
-            "tr": "Waffle",
-            "en": "Waffle",
-            "ar": "وافل"
-          }
-        },
-        "meyveli_krep": {
-          "name": {
-            "tr": "Meyveli Krep",
-            "en": "Fruit Crêpe",
-            "ar": "كريب بالفواكه"
-          }
-        },
-        "zeyrek_special_sarma_krep": {
-          "name": {
-            "tr": "Zeyrek Special Sarma Krep",
-            "en": "Zeyrek Special Rolled Crêpe",
-            "ar": "كريب زيريك الملفوف"
-          }
-        },
-        "suffle": {
-          "name": {
-            "tr": "Suffle",
-            "en": "Soufflé",
-            "ar": "سوفليه"
-          }
-        },
-        "balli_fistikli": {
-          "name": {
-            "tr": "Ballı Fıstıklı",
-            "en": "Honey & Pistachio Cake",
-            "ar": "كعكة بالعسل والفستق"
-          }
-        },
-        "balli_cevizli": {
-          "name": {
-            "tr": "Ballı Cevizli",
-            "en": "Honey & Walnut Cake",
-            "ar": "كعكة بالعسل والجوز"
-          }
-        },
-        "cheesecake": {
-          "name": {
-            "tr": "Cheesecake",
-            "en": "Cheesecake",
-            "ar": "تشيز كيك"
-          }
-        },
-        "marlenka": {
-          "name": {
-            "tr": "Marlenka",
-            "en": "Marlenka",
-            "ar": "مارلينكا"
-          }
-        },
-        "meyveli_brownie": {
-          "name": {
-            "tr": "Meyveli Brownie",
-            "en": "Fruit Brownie",
-            "ar": "براوني بالفواكه"
-          }
-        },
-        "trilece": {
-          "name": {
-            "tr": "Trileçe",
-            "en": "Tres Leches Cake",
-            "ar": "تريليتشا"
-          }
-        },
-        "meyve_tabagi": {
-          "name": {
-            "tr": "Meyve Tabağı",
-            "en": "Fruit Platter",
-            "ar": "طبق فواكه"
-          }
-        },
-        "cikolatali_cilek": {
-          "name": {
-            "tr": "Çikolatalı Çilek",
-            "en": "Chocolate Strawberries",
-            "ar": "فراولة بالشوكولاتة"
-          }
-        },
-        "sikma_portakal": {
-          "name": {
-            "tr": "Sıkma Portakal",
-            "en": "Orange Juice",
-            "ar": "عصير برتقال طازج"
-          }
-        },
-        "karpuz_suyu": {
-          "name": {
-            "tr": "Karpuz Suyu",
-            "en": "Watermelon Juice",
-            "ar": "عصير بطيخ"
-          }
-        },
-        "ananas_suyu": {
-          "name": {
-            "tr": "Ananas Suyu",
-            "en": "Pineapple Juice",
-            "ar": "عصير أناناس"
-          }
-        },
-        "karisik_meyve_suyu": {
-          "name": {
-            "tr": "Karışık Meyve Suyu",
-            "en": "Mixed Fruit Juice",
-            "ar": "عصير فواكه مشكل"
-          }
-        },
-        "limonata": {
-          "name": {
-            "tr": "Limonata",
-            "en": "Lemonade",
-            "ar": "ليموناضة"
-          }
-        },
-        "turk_kahvesi": {
-          "name": {
-            "tr": "Türk Kahvesi",
-            "en": "Turkish Coffee",
-            "ar": "قهوة تركية"
-          }
-        },
-        "osmanli_kahvesi": {
-          "name": {
-            "tr": "Osmanlı Kahvesi",
-            "en": "Ottoman Coffee",
-            "ar": "قهوة عثمانية"
-          }
-        },
-        "arap_kahvesi": {
-          "name": {
-            "tr": "Arap Kahvesi",
-            "en": "Arabic Coffee",
-            "ar": "قهوة عربية"
-          }
-        },
-        "filtre_kahve": {
-          "name": {
-            "tr": "Filtre Kahve",
-            "en": "Filter Coffee",
-            "ar": "قهوة فلتر"
-          }
-        },
-        "espresso": {
-          "name": {
-            "tr": "Espresso",
-            "en": "Espresso",
-            "ar": "إسبريسو"
-          }
-        },
-        "americano": {
-          "name": {
-            "tr": "Americano",
-            "en": "Americano",
-            "ar": "أمريكانو"
-          }
-        },
-        "latte": {
-          "name": {
-            "tr": "Latte",
-            "en": "Latte",
-            "ar": "لاتيه"
-          }
-        },
-        "cappucino": {
-          "name": {
-            "tr": "Cappucino",
-            "en": "Cappuccino",
-            "ar": "كابتشينو"
-          }
-        },
-        "mocha": {
-          "name": {
-            "tr": "Mocha",
-            "en": "Mocha",
-            "ar": "موكا"
-          }
-        },
-        "fransiz_kahvesi": {
-          "name": {
-            "tr": "Fransız Kahvesi",
-            "en": "French Coffee",
-            "ar": "قهوة فرنسية"
-          }
-        },
-        "macchiato": {
-          "name": {
-            "tr": "Macchiato",
-            "en": "Macchiato",
-            "ar": "ماكياتو"
-          }
-        },
-        "sicak_cikolata": {
-          "name": {
-            "tr": "Sıcak Çikolata",
-            "en": "Hot Chocolate",
-            "ar": "شوكولاتة ساخنة"
-          }
-        },
-        "sahlep": {
-          "name": {
-            "tr": "Sahlep",
-            "en": "Sahlep",
-            "ar": "سحلب"
-          }
-        },
-        "bardak_cay": {
-          "name": {
-            "tr": "Bardak Çay",
-            "en": "Tea (Glass)",
-            "ar": "كأس شاي"
-          }
-        },
-        "demlik_cay": {
-          "name": {
-            "tr": "Demlik Çay",
-            "en": "Tea (Pot)",
-            "ar": "إبريق شاي"
-          }
-        },
-        "ice_americano": {
-          "name": {
-            "tr": "Ice Americano",
-            "en": "Iced Americano",
-            "ar": "أمريكانو مثلج"
-          }
-        },
-        "ice_latte": {
-          "name": {
-            "tr": "Ice Latte",
-            "en": "Iced Latte",
-            "ar": "لاتيه مثلج"
-          }
-        },
-        "affogato": {
-          "name": {
-            "tr": "Affogato",
-            "en": "Affogato",
-            "ar": "أفوجاتو"
-          }
-        },
-        "ice_mocha": {
-          "name": {
-            "tr": "Ice Mocha",
-            "en": "Iced Mocha",
-            "ar": "موكا مثلجة"
-          }
-        },
-        "mojito_drink": {
-          "name": {
-            "tr": "Mojito",
-            "en": "Mojito",
-            "ar": "موهيتو"
-          }
-        },
-        "pepsi": {
-          "name": {
-            "tr": "Pepsi",
-            "en": "Pepsi",
-            "ar": "بيبسي"
-          }
-        },
-        "fanta": {
-          "name": {
-            "tr": "Fanta",
-            "en": "Fanta",
-            "ar": "فانتا"
-          }
-        },
-        "sade_soda": {
-          "name": {
-            "tr": "Sade Soda",
-            "en": "Sparkling Water",
-            "ar": "صودا عادية"
-          }
-        },
-        "meyveli_soda": {
-          "name": {
-            "tr": "Meyveli Soda",
-            "en": "Flavored Soda",
-            "ar": "صودا بالفواكه"
-          }
-        },
-        "meyve_suyu": {
-          "name": {
-            "tr": "Meyve Suyu",
-            "en": "Fruit Juice",
-            "ar": "عصير فواكه"
-          }
-        },
-        "ayran": {
-          "name": {
-            "tr": "Ayran",
-            "en": "Ayran",
-            "ar": "عيران"
-          }
-        }
-      }
+    "ana_yemekler": {
+      "tr": "Ana Yemekler",
+      "en": "Main Courses",
+      "ar": "الأطباق الرئيسية"
+    },
+    "makarnalar": {
+      "tr": "Makarnalar",
+      "en": "Pasta",
+      "ar": "معكرونة"
+    },
+    "burgerler": {
+      "tr": "Burgerler",
+      "en": "Burgers",
+      "ar": "برغر"
+    },
+    "pizza_cesitleri": {
+      "tr": "Pizza Çeşitleri",
+      "en": "Pizzas",
+      "ar": "بيتزا"
+    },
+    "tatlilar": {
+      "tr": "Tatlılar",
+      "en": "Desserts",
+      "ar": "حلويات"
+    },
+    "waffle_krepler": {
+      "tr": "Waffle & Krepler",
+      "en": "Waffles & Crêpes",
+      "ar": "وافل وكريب"
+    },
+    "pastalar": {
+      "tr": "Pastalar",
+      "en": "Cakes",
+      "ar": "كعك"
+    },
+    "vitamin_bar": {
+      "tr": "Vitamin Bar",
+      "en": "Vitamin Bar",
+      "ar": "بار الفيتامينات"
+    },
+    "kahve_cesitleri": {
+      "tr": "Kahve Çeşitleri",
+      "en": "Coffees",
+      "ar": "أنواع القهوة"
+    },
+    "soguk_kahve": {
+      "tr": "Soğuk Kahve",
+      "en": "Iced Coffees",
+      "ar": "قهوة مثلجة"
+    },
+    "cay": {
+      "tr": "Çay",
+      "en": "Tea",
+      "ar": "شاي"
+    },
+    "mojito": {
+      "tr": "Mojito",
+      "en": "Mojitos",
+      "ar": "موهيتو"
+    },
+    "mesrubatlar": {
+      "tr": "Meşrubatlar",
+      "en": "Soft Drinks",
+      "ar": "مشروبات باردة"
+    }
+  },
+  "products": {
+    "gunun_corbasi": {
+      "tr": "Günün Çorbası",
+      "en": "Soup of the Day",
+      "ar": "شوربة اليوم"
+    },
+    "karisik_tost": {
+      "tr": "Karışık Tost",
+      "en": "Mixed Toast",
+      "ar": "توست مشكل"
+    },
+    "kasarli_tost": {
+      "tr": "Kaşarlı Tost",
+      "en": "Cheese Toast",
+      "ar": "توست بالجبن"
+    },
+    "serpme_kahvalti": {
+      "tr": "Serpme Kahvaltı",
+      "en": "Turkish Breakfast",
+      "ar": "فطور تركي مشكّل"
+    },
+    "kahvalti_tabagi": {
+      "tr": "Kahvaltı Tabağı",
+      "en": "Breakfast Platter",
+      "ar": "طبق فطور"
+    },
+    "ortadogu_kahvaltisi": {
+      "tr": "Ortadoğu Kahvaltısı",
+      "en": "Middle Eastern Breakfast",
+      "ar": "فطور شرق أوسطي"
+    },
+    "omlet": {
+      "tr": "Omlet",
+      "en": "Omelette",
+      "ar": "أومليت"
+    },
+    "menemen": {
+      "tr": "Menemen",
+      "en": "Menemen",
+      "ar": "شكشوكة"
+    },
+    "patates_cipsi": {
+      "tr": "Patates Cipsi",
+      "en": "French Fries",
+      "ar": "بطاطس مقلية"
+    },
+    "gozlemeler": {
+      "tr": "Gözlemeler",
+      "en": "Gözleme",
+      "ar": "فطاير صاج"
+    },
+    "akcaabat_kofte": {
+      "tr": "Akçaabat Köfte",
+      "en": "Akçaabat Meatballs",
+      "ar": "كفتة أكشابات"
+    },
+    "tavuk_izgara": {
+      "tr": "Tavuk Izgara",
+      "en": "Grilled Chicken",
+      "ar": "دجاج مشوي"
+    },
+    "tavuk_sis": {
+      "tr": "Tavuk Şiş",
+      "en": "Chicken Shish Kebab",
+      "ar": "شيش دجاج"
+    },
+    "tavuk_sote": {
+      "tr": "Tavuk Sote",
+      "en": "Chicken Sauté",
+      "ar": "دجاج سوتيه"
+    },
+    "et_sote": {
+      "tr": "Et Sote",
+      "en": "Beef Sauté",
+      "ar": "لحم سوتيه"
+    },
+    "kori_soslu_tavuk": {
+      "tr": "Köri Soslu Tavuk",
+      "en": "Chicken with Curry Sauce",
+      "ar": "دجاج بالكاري"
+    },
+    "et_fajita": {
+      "tr": "Et Fajita",
+      "en": "Beef Fajita",
+      "ar": "فاهيتا لحم"
+    },
+    "tavuk_fajita": {
+      "tr": "Tavuk Fajita",
+      "en": "Chicken Fajita",
+      "ar": "فاهيتا دجاج"
+    },
+    "tavuk_doner": {
+      "tr": "Tavuk Döner",
+      "en": "Chicken Döner",
+      "ar": "شاورما دجاج"
+    },
+    "pilav": {
+      "tr": "Pilav",
+      "en": "Rice Pilaf",
+      "ar": "أرز بسمتي"
+    },
+    "spaghetti_bolognese": {
+      "tr": "Spaghetti Bolognese",
+      "en": "Spaghetti Bolognese",
+      "ar": "سباغيتي بولونيز"
+    },
+    "penne_arabiata": {
+      "tr": "Penne Arabiata",
+      "en": "Penne Arrabbiata",
+      "ar": "بيني أرابياتا"
+    },
+    "tavuklu_fettuccine_alfredo": {
+      "tr": "Tavuklu Fettuccine Alfredo",
+      "en": "Fettuccine Alfredo with Chicken",
+      "ar": "فيتوتشيني ألفريدو بالدجاج"
+    },
+    "sebzeli_noodle": {
+      "tr": "Sebzeli Noodle",
+      "en": "Vegetable Noodles",
+      "ar": "نودلز بالخضار"
+    },
+    "tavuklu_noodle": {
+      "tr": "Tavuklu Noodle",
+      "en": "Chicken Noodles",
+      "ar": "نودلز بالدجاج"
+    },
+    "zeyrek_special_burger": {
+      "tr": "Zeyrek Special Burger",
+      "en": "Zeyrek Special Burger",
+      "ar": "برغر زيريك الخاص"
+    },
+    "et_burger": {
+      "tr": "Et Burger",
+      "en": "Beef Burger",
+      "ar": "برغر لحم"
+    },
+    "tavuk_burger": {
+      "tr": "Tavuk Burger",
+      "en": "Chicken Burger",
+      "ar": "برغر دجاج"
+    },
+    "sebzeli_pizza": {
+      "tr": "Sebzeli Pizza",
+      "en": "Vegetable Pizza",
+      "ar": "بيتزا خضار"
+    },
+    "karisik_pizza": {
+      "tr": "Karışık Pizza",
+      "en": "Mixed Pizza",
+      "ar": "بيتزا مشكلة"
+    },
+    "pizza_margarita": {
+      "tr": "Pizza Margarita",
+      "en": "Margherita Pizza",
+      "ar": "بيتزا مارغريتا"
+    },
+    "sutlac": {
+      "tr": "Sütlaç",
+      "en": "Sütlaç",
+      "ar": "سوتلاش"
+    },
+    "kunefe": {
+      "tr": "Künefe",
+      "en": "Künefe",
+      "ar": "كنافة"
+    },
+    "baklava": {
+      "tr": "Baklava",
+      "en": "Baklava",
+      "ar": "بقلاوة"
+    },
+    "waffle": {
+      "tr": "Waffle",
+      "en": "Waffle",
+      "ar": "وافل"
+    },
+    "meyveli_krep": {
+      "tr": "Meyveli Krep",
+      "en": "Fruit Crêpe",
+      "ar": "كريب بالفواكه"
+    },
+    "zeyrek_special_sarma_krep": {
+      "tr": "Zeyrek Special Sarma Krep",
+      "en": "Zeyrek Special Rolled Crêpe",
+      "ar": "كريب زيريك الملفوف"
+    },
+    "suffle": {
+      "tr": "Suffle",
+      "en": "Soufflé",
+      "ar": "سوفليه"
+    },
+    "balli_fistikli": {
+      "tr": "Ballı Fıstıklı",
+      "en": "Honey & Pistachio Cake",
+      "ar": "كعكة بالعسل والفستق"
+    },
+    "balli_cevizli": {
+      "tr": "Ballı Cevizli",
+      "en": "Honey & Walnut Cake",
+      "ar": "كعكة بالعسل والجوز"
+    },
+    "cheesecake": {
+      "tr": "Cheesecake",
+      "en": "Cheesecake",
+      "ar": "تشيز كيك"
+    },
+    "marlenka": {
+      "tr": "Marlenka",
+      "en": "Marlenka",
+      "ar": "مارلينكا"
+    },
+    "meyveli_brownie": {
+      "tr": "Meyveli Brownie",
+      "en": "Fruit Brownie",
+      "ar": "براوني بالفواكه"
+    },
+    "trilece": {
+      "tr": "Trileçe",
+      "en": "Tres Leches Cake",
+      "ar": "تريليتشا"
+    },
+    "meyve_tabagi": {
+      "tr": "Meyve Tabağı",
+      "en": "Fruit Platter",
+      "ar": "طبق فواكه"
+    },
+    "cikolatali_cilek": {
+      "tr": "Çikolatalı Çilek",
+      "en": "Chocolate Strawberries",
+      "ar": "فراولة بالشوكولاتة"
+    },
+    "sikma_portakal": {
+      "tr": "Sıkma Portakal",
+      "en": "Orange Juice",
+      "ar": "عصير برتقال طازج"
+    },
+    "karpuz_suyu": {
+      "tr": "Karpuz Suyu",
+      "en": "Watermelon Juice",
+      "ar": "عصير بطيخ"
+    },
+    "ananas_suyu": {
+      "tr": "Ananas Suyu",
+      "en": "Pineapple Juice",
+      "ar": "عصير أناناس"
+    },
+    "karisik_meyve_suyu": {
+      "tr": "Karışık Meyve Suyu",
+      "en": "Mixed Fruit Juice",
+      "ar": "عصير فواكه مشكل"
+    },
+    "limonata": {
+      "tr": "Limonata",
+      "en": "Lemonade",
+      "ar": "ليموناضة"
+    },
+    "turk_kahvesi": {
+      "tr": "Türk Kahvesi",
+      "en": "Turkish Coffee",
+      "ar": "قهوة تركية"
+    },
+    "osmanli_kahvesi": {
+      "tr": "Osmanlı Kahvesi",
+      "en": "Ottoman Coffee",
+      "ar": "قهوة عثمانية"
+    },
+    "arap_kahvesi": {
+      "tr": "Arap Kahvesi",
+      "en": "Arabic Coffee",
+      "ar": "قهوة عربية"
+    },
+    "filtre_kahve": {
+      "tr": "Filtre Kahve",
+      "en": "Filter Coffee",
+      "ar": "قهوة فلتر"
+    },
+    "espresso": {
+      "tr": "Espresso",
+      "en": "Espresso",
+      "ar": "إسبريسو"
+    },
+    "americano": {
+      "tr": "Americano",
+      "en": "Americano",
+      "ar": "أمريكانو"
+    },
+    "latte": {
+      "tr": "Latte",
+      "en": "Latte",
+      "ar": "لاتيه"
+    },
+    "cappucino": {
+      "tr": "Cappucino",
+      "en": "Cappuccino",
+      "ar": "كابتشينو"
+    },
+    "mocha": {
+      "tr": "Mocha",
+      "en": "Mocha",
+      "ar": "موكا"
+    },
+    "fransiz_kahvesi": {
+      "tr": "Fransız Kahvesi",
+      "en": "French Coffee",
+      "ar": "قهوة فرنسية"
+    },
+    "macchiato": {
+      "tr": "Macchiato",
+      "en": "Macchiato",
+      "ar": "ماكياتو"
+    },
+    "sicak_cikolata": {
+      "tr": "Sıcak Çikolata",
+      "en": "Hot Chocolate",
+      "ar": "شوكولاتة ساخنة"
+    },
+    "sahlep": {
+      "tr": "Sahlep",
+      "en": "Sahlep",
+      "ar": "سحلب"
+    },
+    "bardak_cay": {
+      "tr": "Bardak Çay",
+      "en": "Tea (Glass)",
+      "ar": "كأس شاي"
+    },
+    "demlik_cay": {
+      "tr": "Demlik Çay",
+      "en": "Tea (Pot)",
+      "ar": "إبريق شاي"
+    },
+    "ice_americano": {
+      "tr": "Ice Americano",
+      "en": "Iced Americano",
+      "ar": "أمريكانو مثلج"
+    },
+    "ice_latte": {
+      "tr": "Ice Latte",
+      "en": "Iced Latte",
+      "ar": "لاتيه مثلج"
+    },
+    "affogato": {
+      "tr": "Affogato",
+      "en": "Affogato",
+      "ar": "أفوجاتو"
+    },
+    "ice_mocha": {
+      "tr": "Ice Mocha",
+      "en": "Iced Mocha",
+      "ar": "موكا مثلجة"
+    },
+    "mojito_drink": {
+      "tr": "Mojito",
+      "en": "Mojito",
+      "ar": "موهيتو"
+    },
+    "pepsi": {
+      "tr": "Pepsi",
+      "en": "Pepsi",
+      "ar": "بيبسي"
+    },
+    "fanta": {
+      "tr": "Fanta",
+      "en": "Fanta",
+      "ar": "فانتا"
+    },
+    "sade_soda": {
+      "tr": "Sade Soda",
+      "en": "Sparkling Water",
+      "ar": "صودا عادية"
+    },
+    "meyveli_soda": {
+      "tr": "Meyveli Soda",
+      "en": "Flavored Soda",
+      "ar": "صودا بالفواكه"
+    },
+    "meyve_suyu": {
+      "tr": "Meyve Suyu",
+      "en": "Fruit Juice",
+      "ar": "عصير فواكه"
+    },
+    "ayran": {
+      "tr": "Ayran",
+      "en": "Ayran",
+      "ar": "عيران"
     }
   }
 }
