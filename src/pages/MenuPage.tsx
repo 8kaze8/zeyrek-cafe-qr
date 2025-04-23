@@ -6,6 +6,7 @@ import { fetchCategories, fetchProducts } from "../lib/firebase-admin";
 import type { Category, Product, Language } from "../types/menu";
 import toast from "react-hot-toast";
 import logo from "../assets/logo/zeyrek-cafe-logo.svg";
+import translations from "../../translations.json";
 
 const BACKGROUND_URL = "https://i.ibb.co/nq9CPtG8/arkaplan.png";
 
@@ -30,14 +31,14 @@ export function MenuPage() {
           setSelectedCategory(fetchedCategories[0].id);
         }
       } catch (error) {
-        toast.error("Menü yüklenirken bir hata oluştu");
+        toast.error(translations.menu_load_error[selectedLanguage]);
       } finally {
         setLoading(false);
       }
     };
 
     loadData();
-  }, []);
+  }, [selectedLanguage]);
 
   const filteredProducts = selectedCategory
     ? products.filter(
@@ -91,7 +92,7 @@ export function MenuPage() {
             />
           </div>
           <p className="text-sm sm:text-base md:text-lg font-medium text-[#f7e7d3] mb-2 text-center mt-4 sm:mt-6 max-w-md mx-auto leading-relaxed tracking-wide drop-shadow-lg">
-            Eşsiz lezzetlerin ve keyifli anların adresi
+            {translations.tagline[selectedLanguage]}
           </p>
         </div>
 
@@ -119,6 +120,13 @@ export function MenuPage() {
             </div>
 
             <div className="relative px-1 sm:px-0">
+              {filteredProducts.length === 0 && (
+                <div className="text-center py-8">
+                  <p className="text-[#f7e7d3] text-lg">
+                    {translations.empty_state[selectedLanguage]}
+                  </p>
+                </div>
+              )}
               <ProductList
                 products={filteredProducts}
                 selectedLanguage={selectedLanguage}

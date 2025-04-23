@@ -3,6 +3,7 @@ import { Product } from "../types/menu";
 import type { Language } from "../types/menu";
 import { ProductForm } from "./ProductForm";
 import { Category } from "../types/menu";
+import translations from "../../translations.json";
 
 interface ProductListProps {
   products: Product[];
@@ -42,7 +43,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-white/80 hover:text-white bg-black/20 hover:bg-black/40 transition-colors rounded-full w-10 h-10 flex items-center justify-center shadow-lg z-10 backdrop-blur-sm"
-          aria-label="Kapat"
+          aria-label={translations.close_button[selectedLanguage]}
         >
           <svg
             width="20"
@@ -131,7 +132,7 @@ export const ProductList: React.FC<ProductListProps> = ({
       <div className="text-center py-12">
         <div className="bg-[#2a4c7d]/15 backdrop-blur-sm rounded-2xl p-8 border border-[#4fa3e3]/30">
           <p className="text-lg text-[#4fa3e3]">
-            Bu kategoride henüz ürün bulunmamaktadır
+            {translations.empty_state[selectedLanguage]}
           </p>
         </div>
       </div>
@@ -153,7 +154,7 @@ export const ProductList: React.FC<ProductListProps> = ({
           >
             {mode === "admin" && !(product.is_active ?? true) && (
               <div className="absolute top-2 right-2 bg-gray-900 text-gray-400 px-2 py-1 rounded text-xs">
-                Pasif
+                {translations.inactive_label[selectedLanguage]}
               </div>
             )}
             <div className="aspect-[4/3] relative">
@@ -197,7 +198,7 @@ export const ProductList: React.FC<ProductListProps> = ({
             <button
               onClick={handleEditModalClose}
               className="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors rounded-full w-9 h-9 flex items-center justify-center z-10"
-              aria-label="Kapat"
+              aria-label={translations.close_button[selectedLanguage]}
             >
               <svg
                 width="22"

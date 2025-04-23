@@ -1,38 +1,12 @@
 {
   "rules": {
-    ".read": "auth != null || (!auth && query.orderByChild === 'order')",
-    ".write": "auth != null && auth.token.admin === true",
+    ".read": true,
+    ".write": true,
     "categories": {
-      ".indexOn": "order",
-      "$categoryId": {
-        ".validate": "newData.hasChildren(['name_tr', 'order'])",
-        "name_tr": {
-          ".validate": "newData.isString() && newData.val().length > 0"
-        },
-        "name_en": { ".validate": "!newData.exists() || newData.isString()" },
-        "name_ar": { ".validate": "!newData.exists() || newData.isString()" },
-        "order": { ".validate": "newData.isNumber() && newData.val() >= 0" },
-        "image_url": { ".validate": "!newData.exists() || newData.isString()" },
-        "created_at": { ".validate": "newData.val() <= now" },
-        "updated_at": { ".validate": "newData.val() <= now" }
-      }
+      ".indexOn": "order"
     },
     "products": {
-      ".indexOn": "order",
-      "$productId": {
-        ".validate": "newData.hasChildren(['name_tr', 'category_id', 'price', 'order'])",
-        "name_tr": {
-          ".validate": "newData.isString() && newData.val().length > 0"
-        },
-        "name_en": { ".validate": "!newData.exists() || newData.isString()" },
-        "name_ar": { ".validate": "!newData.exists() || newData.isString()" },
-        "category_id": {
-          ".validate": "newData.isString() && root.child('categories').child(newData.val()).exists()"
-        },
-        "price": { ".validate": "newData.isNumber() && newData.val() >= 0" },
-        "order": { ".validate": "newData.isNumber() && newData.val() >= 0" },
-        "image_url": { ".validate": "!newData.exists() || newData.isString()" }
-      }
+      ".indexOn": "order"
     }
   }
 }
