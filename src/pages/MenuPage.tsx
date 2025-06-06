@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import logo from "../assets/logo/zeyrek-cafe-logo.svg";
 import translations from "../../translations.json";
 
-const BACKGROUND_URL = "https://i.ibb.co/nq9CPtG8/arkaplan.png";
+const BACKGROUND_URL = "https://i.ibb.co/q3c0YP8N/arkaplan.webp";
 
 export function MenuPage() {
   const [categories, setCategories] = useState<Category[]>([]);
