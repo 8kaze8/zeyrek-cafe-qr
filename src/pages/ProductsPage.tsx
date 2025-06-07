@@ -1,20 +1,13 @@
 import { useState, useEffect } from "react";
-import { ProductList } from "../components/ProductList";
 import { ProductForm } from "../components/ProductForm";
 import { Layout } from "../components/Layout";
-import {
-  fetchProducts,
-  fetchCategories,
-  updateAllProductsToActive,
-} from "../lib/firebase-admin";
+import { fetchProducts, fetchCategories } from "../lib/firebase-admin";
 import type { Product, Category, Language } from "../types/menu";
 import toast from "react-hot-toast";
-import { CategoryList } from "../components/CategoryList";
 
 export function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
-  const [loading, setLoading] = useState(true);
   const [selectedLanguage] = useState<Language>("tr");
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
     null
@@ -36,18 +29,8 @@ export function ProductsPage() {
       }
     } catch (error) {
       toast.error("Veriler yüklenirken bir hata oluştu");
-    } finally {
-      setLoading(false);
     }
   };
-
-  useEffect(() => {
-    const init = async () => {
-      await updateAllProductsToActive();
-      await fetchProducts(); // Refresh the products list
-    };
-    init();
-  }, []);
 
   useEffect(() => {
     loadData();
@@ -90,7 +73,7 @@ export function ProductsPage() {
                 {category.image_url && (
                   <img
                     src={category.image_url}
-                    alt={category[`name_${selectedLanguage}`] || ""}
+                    alt={category[`name_${selectedLanguage}`] ?? ""}
                     className="w-12 h-12 rounded-lg object-cover"
                   />
                 )}
@@ -120,7 +103,7 @@ export function ProductsPage() {
                 <div className="aspect-[4/3] relative">
                   <img
                     src={product.image_url || "https://via.placeholder.com/300"}
-                    alt={product[`name_${selectedLanguage}`]}
+                    alt={product[`name_${selectedLanguage}`] ?? ""}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
