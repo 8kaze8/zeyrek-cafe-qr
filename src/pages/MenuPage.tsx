@@ -14,8 +14,19 @@ const BACKGROUND_URL = "https://i.ibb.co/q3c0YP8N/arkaplan.webp";
 export function MenuPage() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedLanguage, setSelectedLanguage] = useState<Language>("tr");
+  // localStorage'dan başlat
+  const getInitialLanguage = () => {
+    return (localStorage.getItem("selectedLanguage") as Language) || "tr";
+  };
+  const getInitialCategory = () => {
+    return localStorage.getItem("selectedCategory") || null;
+  };
+  const [selectedLanguage, setSelectedLanguage] = useState<Language>(
+    getInitialLanguage()
+  );
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(
+    getInitialCategory()
+  );
   const [loading, setLoading] = useState(true);
   const [promoOpen, setPromoOpen] = useState(true);
 
@@ -150,7 +161,8 @@ export function MenuPage() {
         setCategories(fetchedCategories);
         setProducts(fetchedProducts);
 
-        if (fetchedCategories.length > 0) {
+        // Eğer localStorage'da kategori yoksa ilk kategoriyi seç
+        if (!getInitialCategory() && fetchedCategories.length > 0) {
           setSelectedCategory(fetchedCategories[0].id);
         }
       } catch (error) {
@@ -162,6 +174,18 @@ export function MenuPage() {
 
     loadData();
   }, [selectedLanguage]);
+
+  // Dil değişince localStorage'a yaz
+  useEffect(() => {
+    localStorage.setItem("selectedLanguage", selectedLanguage);
+  }, [selectedLanguage]);
+
+  // Kategori değişince localStorage'a yaz
+  useEffect(() => {
+    if (selectedCategory) {
+      localStorage.setItem("selectedCategory", selectedCategory);
+    }
+  }, [selectedCategory]);
 
   // Dil değiştiğinde modalı tekrar göster
   useEffect(() => {
