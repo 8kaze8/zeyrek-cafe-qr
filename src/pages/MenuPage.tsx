@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CategoryList } from "../components/CategoryList";
 import { ProductList } from "../components/ProductList";
 import { LanguageSelector } from "../components/LanguageSelector";
@@ -18,6 +18,52 @@ export function MenuPage() {
   const [selectedLanguage, setSelectedLanguage] = useState<Language>("tr");
   const [loading, setLoading] = useState(true);
   const [promoOpen, setPromoOpen] = useState(true);
+
+  // Animasyonlu dil başlığı için
+  const languagePrompts = [
+    { text: "Dili seçiniz", lang: "tr" },
+    { text: "Choose language", lang: "en" },
+    { text: "اختر اللغة", lang: "ar" },
+  ];
+  const [promptIndex, setPromptIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+  const promptTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    promptTimeout.current = setTimeout(() => {
+      setFade(false);
+      setTimeout(() => {
+        setPromptIndex((prev) => (prev + 1) % languagePrompts.length);
+        setFade(true);
+      }, 400); // fade out süresi
+    }, 2200); // gösterim süresi
+    return () => {
+      if (promptTimeout.current) clearTimeout(promptTimeout.current);
+    };
+  }, [promptIndex]);
+
+  // Kategori kaydırma başlığı için
+  const categoryPrompts = [
+    { text: "Kategorileri kaydırın", lang: "tr" },
+    { text: "Scroll categories", lang: "en" },
+    { text: "اسحب التصنيفات", lang: "ar" },
+  ];
+  const [catPromptIndex, setCatPromptIndex] = useState(0);
+  const [catFade, setCatFade] = useState(true);
+  const catPromptTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    catPromptTimeout.current = setTimeout(() => {
+      setCatFade(false);
+      setTimeout(() => {
+        setCatPromptIndex((prev) => (prev + 1) % categoryPrompts.length);
+        setCatFade(true);
+      }, 400);
+    }, 2200);
+    return () => {
+      if (catPromptTimeout.current) clearTimeout(catPromptTimeout.current);
+    };
+  }, [catPromptIndex]);
 
   // Modal içeriği dil desteği
   const isEnglish = selectedLanguage === "en";
@@ -199,6 +245,24 @@ export function MenuPage() {
             {translations.tagline[selectedLanguage]}
           </p>
         </div>
+        {/* Animasyonlu dil başlığı - dil seçicinin hemen üstünde */}
+        <div
+          className={`mb-1 h-6 flex items-center justify-center w-full transition-opacity duration-700 ease-in-out ${
+            fade ? "opacity-100" : "opacity-0"
+          }`}
+          dir={languagePrompts[promptIndex].lang === "ar" ? "rtl" : "ltr"}
+          aria-live="polite"
+        >
+          <span
+            className="text-base font-normal text-[#f7e7d3] drop-shadow-sm tracking-wide select-none"
+            style={{
+              letterSpacing:
+                languagePrompts[promptIndex].lang === "ar" ? 0 : undefined,
+            }}
+          >
+            {languagePrompts[promptIndex].text}
+          </span>
+        </div>
 
         {/* Menu Section */}
         <div className="relative w-full max-w-2xl mx-auto px-0 sm:px-4 pb-8 sm:pb-12">
@@ -221,6 +285,20 @@ export function MenuPage() {
                 variant="horizontal"
                 showEditLabel={false}
               />
+            </div>
+            {/* Kategori kaydırma animasyonlu başlık - ALTTA */}
+            <div
+              className={`mt-1 h-6 flex items-center justify-center w-full transition-opacity duration-700 ease-in-out ${
+                catFade ? "opacity-100" : "opacity-0"
+              }`}
+              aria-live="polite"
+            >
+              <span className="text-base font-normal text-[#f7e7d3] drop-shadow-sm tracking-wide select-none ml-2">
+                {categoryPrompts[catPromptIndex].text}
+              </span>
+              <span className="text-[#f7e7d3] text-lg select-none">
+                &#8594;
+              </span>
             </div>
 
             <div className="relative px-1 sm:px-0">
