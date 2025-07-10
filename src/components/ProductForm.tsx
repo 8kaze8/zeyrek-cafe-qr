@@ -113,16 +113,41 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         setUploading(false);
       }
       if (editMode && productId) {
-        await updateProduct(productId, {
-          ...data,
-          image_url: imageUrl,
-          name_en: data.name_en || null,
-          name_ar: data.name_ar || null,
-          description_tr: data.description_tr || null,
-          description_en: data.description_en || null,
-          description_ar: data.description_ar || null,
-          is_active: data.is_active,
-        });
+        // Sadece dolu alanları güncelleme objesine ekle
+        const updateFields: Partial<ProductFormData> = {};
+        if (typeof data.name_tr === "string" && data.name_tr.trim() !== "")
+          updateFields.name_tr = data.name_tr;
+        if (typeof data.name_en === "string" && data.name_en.trim() !== "")
+          updateFields.name_en = data.name_en;
+        if (typeof data.name_ar === "string" && data.name_ar.trim() !== "")
+          updateFields.name_ar = data.name_ar;
+        if (
+          typeof data.description_tr === "string" &&
+          data.description_tr.trim() !== ""
+        )
+          updateFields.description_tr = data.description_tr;
+        if (
+          typeof data.description_en === "string" &&
+          data.description_en.trim() !== ""
+        )
+          updateFields.description_en = data.description_en;
+        if (
+          typeof data.description_ar === "string" &&
+          data.description_ar.trim() !== ""
+        )
+          updateFields.description_ar = data.description_ar;
+        if (
+          typeof data.category_id === "string" &&
+          data.category_id.trim() !== ""
+        )
+          updateFields.category_id = data.category_id;
+        if (typeof data.price === "number") updateFields.price = data.price;
+        if (typeof data.order === "number") updateFields.order = data.order;
+        if (typeof imageUrl === "string" && imageUrl.trim() !== "")
+          updateFields.image_url = imageUrl;
+        if (typeof data.is_active === "boolean")
+          updateFields.is_active = data.is_active;
+        await updateProduct(productId, updateFields);
         toast.success("Ürün güncellendi", { id: loadingToast });
       } else {
         await addProduct({
@@ -175,13 +200,14 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     <>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-6 bg-gray-800 p-6 rounded-xl border border-gray-700"
+        className="space-y-6 bg-gray-800 p-6 rounded-xl border border-gray-700 max-h-[80vh] overflow-y-auto"
       >
         <div>
           <h2 className="text-xl font-semibold text-white mb-4">
             {editMode ? "Ürünü Düzenle" : "Yeni Ürün Ekle"}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Türkçe Ad */}
             <div>
               <label
                 htmlFor="name_tr"
@@ -203,6 +229,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               )}
             </div>
 
+            {/* Kategori Seçimi */}
             <div>
               <label
                 htmlFor="category_id"
@@ -229,6 +256,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               )}
             </div>
 
+            {/* Fiyat ve Sıra Numarası */}
             <div>
               <label
                 htmlFor="price"
@@ -272,6 +300,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               )}
             </div>
 
+            {/* Türkçe Açıklama */}
             <div className="md:col-span-2">
               <label
                 htmlFor="description_tr"
@@ -293,6 +322,101 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               )}
             </div>
 
+            {/* --- DİĞER DİLLER --- */}
+            <div className="md:col-span-2 border-t border-gray-700 pt-4 mt-2">
+              <h3 className="text-base font-semibold text-gray-200 mb-2">
+                Diğer Diller (Opsiyonel)
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* İngilizce Ad */}
+                <div>
+                  <label
+                    htmlFor="name_en"
+                    className="block text-sm font-medium text-gray-300"
+                  >
+                    Ürün Adı (İngilizce)
+                  </label>
+                  <input
+                    type="text"
+                    {...register("name_en")}
+                    className="mt-1 block w-full rounded-md border-gray-700 bg-gray-700/50 text-white shadow-sm focus:border-red-500 focus:ring-red-500"
+                    placeholder="Product Name (EN)"
+                    disabled={isSubmitting}
+                  />
+                  {errors.name_en && (
+                    <p className="mt-1 text-sm text-red-500">
+                      {errors.name_en.message}
+                    </p>
+                  )}
+                </div>
+                {/* Arapça Ad */}
+                <div>
+                  <label
+                    htmlFor="name_ar"
+                    className="block text-sm font-medium text-gray-300"
+                  >
+                    Ürün Adı (Arapça)
+                  </label>
+                  <input
+                    type="text"
+                    {...register("name_ar")}
+                    className="mt-1 block w-full rounded-md border-gray-700 bg-gray-700/50 text-white shadow-sm focus:border-red-500 focus:ring-red-500"
+                    placeholder="اسم المنتج (AR)"
+                    disabled={isSubmitting}
+                  />
+                  {errors.name_ar && (
+                    <p className="mt-1 text-sm text-red-500">
+                      {errors.name_ar.message}
+                    </p>
+                  )}
+                </div>
+                {/* İngilizce Açıklama */}
+                <div className="md:col-span-2">
+                  <label
+                    htmlFor="description_en"
+                    className="block text-sm font-medium text-gray-300"
+                  >
+                    Açıklama (İngilizce)
+                  </label>
+                  <textarea
+                    {...register("description_en")}
+                    rows={2}
+                    className="mt-1 block w-full rounded-md border-gray-700 bg-gray-700/50 text-white shadow-sm focus:border-red-500 focus:ring-red-500"
+                    placeholder="Product description (EN)"
+                    disabled={isSubmitting}
+                  />
+                  {errors.description_en && (
+                    <p className="mt-1 text-sm text-red-500">
+                      {errors.description_en.message}
+                    </p>
+                  )}
+                </div>
+                {/* Arapça Açıklama */}
+                <div className="md:col-span-2">
+                  <label
+                    htmlFor="description_ar"
+                    className="block text-sm font-medium text-gray-300"
+                  >
+                    Açıklama (Arapça)
+                  </label>
+                  <textarea
+                    {...register("description_ar")}
+                    rows={2}
+                    className="mt-1 block w-full rounded-md border-gray-700 bg-gray-700/50 text-white shadow-sm focus:border-red-500 focus:ring-red-500"
+                    placeholder="وصف المنتج (AR)"
+                    disabled={isSubmitting}
+                  />
+                  {errors.description_ar && (
+                    <p className="mt-1 text-sm text-red-500">
+                      {errors.description_ar.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+            {/* --- DİĞER DİLLER SONU --- */}
+
+            {/* Resim, Aktiflik, Butonlar ... */}
             <div className="md:col-span-2">
               <label
                 htmlFor="image_url"

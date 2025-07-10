@@ -109,6 +109,26 @@
       "tr": "Meşrubatlar",
       "en": "Soft Drinks",
       "ar": "مشروبات باردة"
+    },
+    "salatalar": {
+      "tr": "Salatalar",
+      "en": "Salads",
+      "ar": "سلطات"
+    },
+    "atistirmaliklar": {
+      "tr": "Atıştırmalıklar",
+      "en": "Snacks",
+      "ar": "مطبوخات"
+    },
+    "nargile_cesitleri": {
+      "tr": "Nargile Çeşitleri",
+      "en": "Shisha",
+      "ar": "نرجيلة"
+    },
+    "gozlemeler": {
+      "tr": "Gözlemeler",
+      "en": "Gözleme",
+      "ar": "فطاير صاج"
     }
   },
   "products": {
@@ -438,9 +458,14 @@
       "ar": "كأس شاي"
     },
     "demlik_cay": {
-      "tr": "Demlik Çay",
-      "en": "Tea (Pot)",
-      "ar": "إبريق شاي"
+      "tr": "Demlik Çay (Küçük)",
+      "en": "Tea (Small Pot)",
+      "ar": "إبريق شاي (صغير)"
+    },
+    "demlik_cay_buyuk": {
+      "tr": "Demlik Çay (Büyük)",
+      "en": "Tea (Large Pot)",
+      "ar": "إبريق شاي (كبير)"
     },
     "ice_americano": {
       "tr": "Ice Americano",
@@ -496,6 +521,301 @@
       "tr": "Ayran",
       "en": "Ayran",
       "ar": "عيران"
+    },
+    "ayvalik_tostu": {
+      "tr": "Ayvalık Tostu",
+      "en": "Ayvalık Toast",
+      "ar": "طوست عيران"
+    },
+    "burger_tost": {
+      "tr": "Tost Burger",
+      "en": "Toast Burger",
+      "ar": "برغر طوست"
+    },
+    "meksika_soslu_tavuk": {
+      "tr": "Meksika Soslu Tavuk",
+      "en": "Mexican Chicken",
+      "ar": "دجاج مكسيكي"
+    },
+    "mantar_soslu_snitzel": {
+      "tr": "Mantar Soslu Şnitzel",
+      "en": "Mushroom Sauced Schnitzel",
+      "ar": "شنيتل مع مرق المرقاش"
+    },
+    "snitzel": {
+      "tr": "Şnitzel",
+      "en": "Schnitzel",
+      "ar": "شنيتل"
+    },
+    "spaghetti": {
+      "tr": "Spaghetti",
+      "en": "Spaghetti",
+      "ar": "سباغيتي"
+    },
+    "spaghetti_napoliten": {
+      "tr": "Napoliten Spaghetti",
+      "en": "Napolitan Spaghetti",
+      "ar": "سباغيتي نابوليتان"
+    },
+    "penne_alfredo": {
+      "tr": "Penne Alfredo",
+      "en": "Penne Alfredo",
+      "ar": "بيني ألفريدو"
+    },
+    "pesto_soslu_fettucine": {
+      "tr": "Pesto Soslu Fettucine",
+      "en": "Pesto Sauced Fettucine",
+      "ar": "فيتوشين مع صلصة البستو"
+    },
+    "penne_napoliten": {
+      "tr": "Napoliten Penne",
+      "en": "Napolitan Penne",
+      "ar": "بيني نابوليتان"
+    },
+    "linguine_napoliten": {
+      "tr": "Napoliten Linguine",
+      "en": "Napolitan Linguine",
+      "ar": "لينجوين نابوليتان"
+    },
+    "kori_soslu_makarna": {
+      "tr": "Köri Soslu Makarna",
+      "en": "Köri Sauced Pasta",
+      "ar": "مكرونة بالكوري"
+    },
+    "manti": {
+      "tr": "Mantı",
+      "en": "Manti",
+      "ar": "منطي"
+    },
+    "cheeseburger": {
+      "tr": "Cheeseburger",
+      "en": "Cheeseburger",
+      "ar": "برغر بالجبن"
+    },
+    "mantarlı_burger": {
+      "tr": "Mantarli Burger",
+      "en": "Mushroom Burger",
+      "ar": "برغر بالمرقاش"
+    },
+    "double_cheeseburger": {
+      "tr": "Double Cheeseburger",
+      "en": "Double Cheeseburger",
+      "ar": "برغر بالجبن مزدوج"
+    },
+    "double_et_burger": {
+      "tr": "Double Et Burger",
+      "en": "Double Beef Burger",
+      "ar": "برغر باللحم مزدوج"
+    },
+    "double_tavukburger": {
+      "tr": "Double Tavuk Burger",
+      "en": "Double Chicken Burger",
+      "ar": "برغر بالدجاج مزدوج"
+    },
+    "sezar_salata": {
+      "tr": "Sezar Salata",
+      "en": "Caesar Salad",
+      "ar": "سلطة سيزار"
+    },
+    "mevsim_salata": {
+      "tr": "Mevsim Salata",
+      "en": "Seasonal Salad",
+      "ar": "سلطة موسمية"
+    },
+    "coban_salata": {
+      "tr": "Coban Salata",
+      "en": "Coban Salad",
+      "ar": "سلطة كوبان"
+    },
+    "ton_balikli_salata": {
+      "tr": "Ton Balıklı Salata",
+      "en": "Tuna Salad",
+      "ar": "سلطة تون"
+    },
+    "parmak_borek": {
+      "tr": "Parmak Borek",
+      "en": "Finger Börek",
+      "ar": "بوريك بالأصابع"
+    },
+    "cips_tabagi": {
+      "tr": "Cips Tabaği",
+      "en": "Potato Chips",
+      "ar": "شيبسي طبق"
+    },
+    "citir_tavuk": {
+      "tr": "Çıtır Tavuk",
+      "en": "Crispy Chicken",
+      "ar": "دجاج كريسبي"
+    },
+    "sogan_halkasi": {
+      "tr": "Soğan Halkası",
+      "en": "Onion Ring",
+      "ar": "حلقة البصل"
+    },
+    "karisik_atistirmalik_tabagi": {
+      "tr": "Karışık Atıştırmalık Tabağı",
+      "en": "Mixed Snacks",
+      "ar": "مطبوخات مختلفة"
+    },
+    "su_boregi": {
+      "tr": "Su Böreği",
+      "en": "Su Böreği",
+      "ar": "بوريك بالماء"
+    },
+    "peynirli_pogaca": {
+      "tr": "Peynirli Poğaca",
+      "en": "Cheese Pogaca",
+      "ar": "بوريك بالجبن"
+    },
+    "sade_pogaca": {
+      "tr": "Sade Poğaca",
+      "en": "Plain Pogaca",
+      "ar": "بوريك بدون جبن"
+    },
+    "simit": {
+      "tr": "Simit",
+      "en": "Simit",
+      "ar": "سميث"
+    },
+    "double_espresso": {
+      "tr": "Double Espresso",
+      "en": "Double Espresso",
+      "ar": "إسبريسو مزدوج"
+    },
+    "long_black": {
+      "tr": "Long Black",
+      "en": "Long Black",
+      "ar": "لونك بلاك"
+    },
+    "red_eye": {
+      "tr": "Red Eye",
+      "en": "Red Eye",
+      "ar": "ريد إي"
+    },
+    "black_eye": {
+      "tr": "Black Eye",
+      "en": "Black Eye",
+      "ar": "بلاك إي"
+    },
+    "flat_white": {
+      "tr": "Flat White",
+      "en": "Flat White",
+      "ar": "فلات وايت"
+    },
+    "cortado": {
+      "tr": "Cortado",
+      "en": "Cortado",
+      "ar": "كورتادو"
+    },
+    "latte_machiato": {
+      "tr": "Latte Machiato",
+      "en": "Latte Machiato",
+      "ar": "لاتيه ماتشياتو"
+    },
+    "caramel_latte": {
+      "tr": "Karamel Latte",
+      "en": "Caramel Latte",
+      "ar": "لاتيه كاراميل"
+    },
+    "vanilya_latte": {
+      "tr": "Vanilya Latte",
+      "en": "Vanilla Latte",
+      "ar": "لاتيه فانيلا"
+    },
+    "al_fakher_cift_elma": {
+      "tr": "Al Fakher Çift Elma",
+      "en": "Al Fakher Double Apple",
+      "ar": "أل فاكر دبل فواكه"
+    },
+    "nakhla_cift_elma": {
+      "tr": "Nakhla Çift Elma",
+      "en": "Nakhla Double Apple",
+      "ar": "نخلة دبل فواكه"
+    },
+    "uzum": {
+      "tr": "Üzüm",
+      "en": "Grape",
+      "ar": "عنب"
+    },
+    "uzum_nane": {
+      "tr": "Üzüm Nane",
+      "en": "Grape Mint",
+      "ar": "عنب بالنعناع"
+    },
+    "yaban_mersini": {
+      "tr": "Yaban Mersini",
+      "en": "Blueberry",
+      "ar": "بلوبري"
+    },
+    "nane": {
+      "tr": "Nane",
+      "en": "Mint",
+      "ar": "نعناع"
+    },
+    "pismis_seftali": {
+      "tr": "Pişmiş Şeftali",
+      "en": "Peach",
+      "ar": "فراولة"
+    },
+    "limon": {
+      "tr": "Limon",
+      "en": "Lemon",
+      "ar": "ليمون"
+    },
+    "love_66": {
+      "tr": "Love 66",
+      "en": "Love 66",
+      "ar": "لوف 66"
+    },
+    "damla_sakizi": {
+      "tr": "Damla Sakızı",
+      "en": "Lemon Drop",
+      "ar": "دملة سكيزي"
+    },
+    "selloum": {
+      "tr": "Selloum",
+      "en": "Selloum",
+      "ar": "سلوم"
+    },
+    "zaghloul": {
+      "tr": "Zaghloul",
+      "en": "Zaghloul",
+      "ar": "زغلول"
+    },
+    "kuymak": {
+      "tr": "Kuymak",
+      "en": "Kuymak",
+      "ar": "كويماك"
+    },
+    "bol_sucuklu_pizza": {
+      "tr": "Böl Sucuklu Pizza",
+      "en": "Extra Sausage Pizza",
+      "ar": "بيتزا بالساوسيك إضافي"
+    },
+    "redbull_mojito": {
+      "tr": "Redbull Mojito",
+      "en": "Redbull Mojito",
+      "ar": "موهيتو ريدبيل"
+    },
+    "cilekli_mojito": {
+      "tr": "Çilekli Mojito",
+      "en": "Strawberry Mojito",
+      "ar": "موهيتو بالفراولة"
+    },
+    "redbull": {
+      "tr": "Redbull",
+      "en": "Redbull",
+      "ar": "ريدبيل"
+    },
+    "su": {
+      "tr": "Su",
+      "en": "Water",
+      "ar": "ماء"
+    },
+    "sucuklu_tost": {
+      "tr": "Sucuklu Tost",
+      "en": "Sausage Toast",
+      "ar": "توست بالسجق"
     }
   }
 }

@@ -79,13 +79,18 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
         setUploading(false);
       }
       if (editMode && initialData && "id" in initialData && initialData.id) {
-        await updateCategory(initialData.id, {
-          ...data,
-          image_url: imageUrl ?? "",
-          name_en: data.name_en || "",
-          name_ar: data.name_ar || "",
-          order: typeof data.order === "number" ? data.order : 0,
-        });
+        // Sadece dolu alanları güncelleme objesine ekle
+        const updateFields: Partial<CategoryFormData> = {};
+        if (typeof data.name_tr === "string" && data.name_tr.trim() !== "")
+          updateFields.name_tr = data.name_tr;
+        if (typeof data.name_en === "string" && data.name_en.trim() !== "")
+          updateFields.name_en = data.name_en;
+        if (typeof data.name_ar === "string" && data.name_ar.trim() !== "")
+          updateFields.name_ar = data.name_ar;
+        if (typeof data.order === "number") updateFields.order = data.order;
+        if (typeof imageUrl === "string" && imageUrl.trim() !== "")
+          updateFields.image_url = imageUrl;
+        await updateCategory(initialData.id, updateFields);
         toast.success("Kategori güncellendi", { id: loadingToast });
       } else {
         await addCategory({
@@ -129,7 +134,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-6 bg-gray-800 p-6 rounded-xl border border-gray-700"
+      className="space-y-6 bg-gray-800 p-6 rounded-xl border border-gray-700 max-h-[80vh] overflow-y-auto"
     >
       <div>
         <h2 className="text-xl font-semibold text-white mb-4">
@@ -156,6 +161,58 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
               </p>
             )}
           </div>
+
+          {/* --- DİĞER DİLLER --- */}
+          <div className="border-t border-gray-700 pt-4 mt-2 md:col-span-1">
+            <h3 className="text-base font-semibold text-gray-200 mb-2">
+              Diğer Diller (Opsiyonel)
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* İngilizce Ad */}
+              <div>
+                <label
+                  htmlFor="name_en"
+                  className="block text-sm font-medium text-gray-300"
+                >
+                  Kategori Adı (İngilizce)
+                </label>
+                <input
+                  type="text"
+                  {...register("name_en")}
+                  className="mt-1 block w-full rounded-md border-gray-700 bg-gray-700/50 text-white shadow-sm focus:border-red-500 focus:ring-red-500"
+                  placeholder="Category Name (EN)"
+                  disabled={isSubmitting}
+                />
+                {errors.name_en && (
+                  <p className="mt-1 text-sm text-red-500">
+                    {errors.name_en.message}
+                  </p>
+                )}
+              </div>
+              {/* Arapça Ad */}
+              <div>
+                <label
+                  htmlFor="name_ar"
+                  className="block text-sm font-medium text-gray-300"
+                >
+                  Kategori Adı (Arapça)
+                </label>
+                <input
+                  type="text"
+                  {...register("name_ar")}
+                  className="mt-1 block w-full rounded-md border-gray-700 bg-gray-700/50 text-white shadow-sm focus:border-red-500 focus:ring-red-500"
+                  placeholder="اسم التصنيف (AR)"
+                  disabled={isSubmitting}
+                />
+                {errors.name_ar && (
+                  <p className="mt-1 text-sm text-red-500">
+                    {errors.name_ar.message}
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+          {/* --- DİĞER DİLLER SONU --- */}
 
           <div>
             <label
